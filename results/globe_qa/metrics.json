@@ -1,0 +1,41 @@
+{
+  "as_of": "2026-11-03",
+  "questions": 20,
+  "scored": 20,
+  "correct": 20,
+  "accuracy": 1.0,
+  "by_kind": {
+    "count": {
+      "questions": 9,
+      "correct": 9
+    },
+    "date": {
+      "questions": 2,
+      "correct": 2
+    },
+    "list": {
+      "questions": 3,
+      "correct": 3
+    },
+    "number": {
+      "questions": 2,
+      "correct": 2
+    },
+    "text": {
+      "questions": 4,
+      "correct": 4
+    }
+  },
+  "outcomes": {
+    "correct": 20
+  },
+  "answered": 20,
+  "median_seconds": 3.8,
+  "median_seconds_uncached": 3.8,
+  "cached_answers": 0,
+  "models": [
+    "claude-opus-5-5"
+  ],
+  "invalid_gold": [],
+  "run_at": "2026-11-11T21:09:55Z"
+}

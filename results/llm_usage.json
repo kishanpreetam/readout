@@ -1,0 +1,14 @@
+{
+  "calls": 104,
+  "cache_hits": 288,
+  "by_task": {
+    "extraction": 8,
+    "qa_schema_only": 48,
+    "qa_schema_docs": 48
+  },
+  "models": {
+    "claude-opus-5-5": 104
+  },
+  "cost_usd_reported": 2.7772,
+  "seconds": 449.3
+}

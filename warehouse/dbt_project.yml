@@ -1,0 +1,29 @@
+name: readout
+version: "0.1.0"
+config-version: 2
+profile: readout
+
+model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+target-path: "target"
+clean-targets: ["target"]
+
+vars:
+  # Every relative window ("next 12 months") is measured from the trial snapshot date.
+  # The pipeline passes the real snapshot date with --vars; this default only keeps compile working.
+  as_of_date: "2026-11-03"
+  readout_window_months: 12
+  runway_alert_months: 12
+
+models:
+  readout:
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: view
+      +schema: intermediate
+    marts:
+      +materialized: table
+      +schema: marts

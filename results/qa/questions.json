@@ -1,0 +1,590 @@
+[
+ {
+  "id": "q01",
+  "kind": "count",
+  "question": "How many studies does Pfizer lead as the lead sponsor?",
+  "gold_sql": "select n_trials_as_lead from marts.dim_organization where org_name = 'Pfizer'",
+  "gold_answer": [
+   [
+    787.0
+   ]
+  ]
+ },
+ {
+  "id": "q02",
+  "kind": "count",
+  "question": "How many Phase 3 studies (phase exactly Phase 3, not Phase 2/3) does AstraZeneca lead?",
+  "gold_sql": "select count(*) from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) join marts.dim_organization o using (org_id) where o.org_name = 'AstraZeneca' and b.sponsor_role = 'lead' and t.phase = 'PHASE3'",
+  "gold_answer": [
+   [
+    258.0
+   ]
+  ]
+ },
+ {
+  "id": "q03",
+  "kind": "count",
+  "question": "How many studies led by Eli Lilly have a primary completion date in calendar year 2027?",
+  "gold_sql": "select count(*) from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) join marts.dim_organization o using (org_id) where o.org_name = 'Eli Lilly and Company' and b.sponsor_role = 'lead' and year(t.primary_completion_date) = 2027",
+  "gold_answer": [
+   [
+    77.0
+   ]
+  ]
+ },
+ {
+  "id": "q04",
+  "kind": "count",
+  "question": "How many studies led by the organization 'Novartis Pharmaceuticals' have the status RECRUITING?",
+  "gold_sql": "select count(*) from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) join marts.dim_organization o using (org_id) where o.org_name = 'Novartis Pharmaceuticals' and b.sponsor_role = 'lead' and t.overall_status = 'RECRUITING'",
+  "gold_answer": [
+   [
+    112.0
+   ]
+  ]
+ },
+ {
+  "id": "q05",
+  "kind": "count",
+  "question": "How many studies led by Bristol-Myers Squibb were terminated?",
+  "gold_sql": "select count(*) from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) join marts.dim_organization o using (org_id) where o.org_name = 'Bristol-Myers Squibb' and b.sponsor_role = 'lead' and t.overall_status = 'TERMINATED'",
+  "gold_answer": [
+   [
+    82.0
+   ]
+  ]
+ },
+ {
+  "id": "q06",
+  "kind": "count",
+  "question": "On how many studies is Regeneron a collaborator rather than the lead sponsor?",
+  "gold_sql": "select n_trials_as_collaborator from marts.dim_organization where org_name = 'Regeneron Pharmaceuticals'",
+  "gold_answer": [
+   [
+    76.0
+   ]
+  ]
+ },
+ {
+  "id": "q07",
+  "kind": "text",
+  "question": "Which organization leads the most studies?",
+  "gold_sql": "select org_name from marts.dim_organization order by n_trials_as_lead desc limit 1",
+  "gold_answer": [
+   [
+    "astrazeneca"
+   ]
+  ]
+ },
+ {
+  "id": "q08",
+  "kind": "list",
+  "question": "Which 5 organizations have the most active Phase 3 or Phase 2/3 studies, counting both lead sponsor and collaborator roles? List their names.",
+  "gold_sql": "select org_name from marts.mart_org_pipeline order by n_active_phase3 desc limit 5",
+  "gold_answer": [
+   [
+    "astrazeneca"
+   ],
+   [
+    "merck & co., inc."
+   ],
+   [
+    "pfizer"
+   ],
+   [
+    "eli lilly and company"
+   ],
+   [
+    "hoffmann-la roche"
+   ]
+  ]
+ },
+ {
+  "id": "q09",
+  "kind": "count",
+  "question": "How many distinct organizations lead at least one study?",
+  "gold_sql": "select count(distinct org_id) from marts.bridge_trial_organization where sponsor_role = 'lead'",
+  "gold_answer": [
+   [
+    9943.0
+   ]
+  ]
+ },
+ {
+  "id": "q10",
+  "kind": "number",
+  "question": "What is the median enrollment count of completed Phase 3 studies (phase exactly Phase 3)?",
+  "gold_sql": "select median(enrollment_count) from marts.dim_trial where phase = 'PHASE3' and overall_status = 'COMPLETED' and enrollment_count is not null",
+  "gold_answer": [
+   [
+    310.0
+   ]
+  ]
+ },
+ {
+  "id": "q11",
+  "kind": "count",
+  "question": "How many studies started in calendar year 2024?",
+  "gold_sql": "select count(*) from marts.dim_trial where year(start_date) = 2024",
+  "gold_answer": [
+   [
+    5603.0
+   ]
+  ]
+ },
+ {
+  "id": "q12",
+  "kind": "number",
+  "question": "What percentage of Phase 2 studies (phase exactly Phase 2) have the status TERMINATED? Round to one decimal place.",
+  "gold_sql": "select round(100.0 * count(*) filter (where overall_status = 'TERMINATED') / count(*), 1) from marts.dim_trial where phase = 'PHASE2'",
+  "gold_answer": [
+   [
+    12.6
+   ]
+  ]
+ },
+ {
+  "id": "q13",
+  "kind": "count",
+  "question": "How many distinct active Phase 3 or Phase 2/3 studies have a primary completion date in the 12 months after the 2026-11-03 snapshot (on or after 2026-11-03 and before 2027-11-03)?",
+  "gold_sql": "select count(distinct nct_id) from marts.mart_upcoming_readouts where is_phase3",
+  "gold_answer": [
+   [
+    1003.0
+   ]
+  ]
+ },
+ {
+  "id": "q14",
+  "kind": "count",
+  "question": "How many organizations have at least one active Phase 3 or Phase 2/3 study with a primary completion date in the 12 months after the 2026-11-03 snapshot, in any role?",
+  "gold_sql": "select count(distinct org_id) from marts.mart_upcoming_readouts where is_phase3",
+  "gold_answer": [
+   [
+    546.0
+   ]
+  ]
+ },
+ {
+  "id": "q15",
+  "kind": "text",
+  "question": "Which organization has the most upcoming readouts (active Phase 2, 2/3 or 3 studies with primary completion in the 12 months after 2026-11-03, any role)?",
+  "gold_sql": "select org_name from marts.mart_org_pipeline order by n_readouts_12m desc limit 1",
+  "gold_answer": [
+   [
+    "astrazeneca"
+   ]
+  ]
+ },
+ {
+  "id": "q16",
+  "kind": "date",
+  "question": "What is the date of Merck & Co.'s next primary completion of an active Phase 3 or Phase 2/3 study on or after 2026-11-03, in any role?",
+  "gold_sql": "select next_phase3_primary_completion from marts.mart_org_pipeline where org_name = 'Merck & Co., Inc.'",
+  "gold_answer": [
+   [
+    "2026-11-20"
+   ]
+  ]
+ },
+ {
+  "id": "q17",
+  "kind": "list",
+  "question": "List the NCT IDs of Amgen's active Phase 3 or Phase 2/3 studies (any role) with a primary completion date in the 12 months after 2026-11-03.",
+  "gold_sql": "select nct_id from marts.mart_upcoming_readouts where org_name = 'Amgen' and is_phase3",
+  "gold_answer": [
+   [
+    "nct07614776"
+   ],
+   [
+    "nct03969329"
+   ],
+   [
+    "nct06430866"
+   ],
+   [
+    "nct07226765"
+   ],
+   [
+    "nct07871409"
+   ],
+   [
+    "nct06858878"
+   ],
+   [
+    "nct05920356"
+   ],
+   [
+    "nct06211036"
+   ],
+   [
+    "nct05972551"
+   ],
+   [
+    "nct06987695"
+   ],
+   [
+    "nct06321601"
+   ],
+   [
+    "nct07778316"
+   ],
+   [
+    "nct06700343"
+   ],
+   [
+    "nct06858839"
+   ],
+   [
+    "nct07225686"
+   ]
+  ]
+ },
+ {
+  "id": "q18",
+  "kind": "count",
+  "question": "In which month of 2027 do the most studies have an estimated (anticipated) primary completion date? Answer with the month number.",
+  "gold_sql": "select month(event_date) from marts.fct_trial_events where event_type = 'primary_completion' and date_type = 'ESTIMATED' and year(event_date) = 2027 group by 1 order by count(*) desc limit 1",
+  "gold_answer": [
+   [
+    12.0
+   ]
+  ]
+ },
+ {
+  "id": "q19",
+  "kind": "count",
+  "question": "How many primary completion dates in calendar year 2025 are actual rather than estimated?",
+  "gold_sql": "select count(*) from marts.fct_trial_events where event_type = 'primary_completion' and date_type = 'ACTUAL' and year(event_date) = 2025",
+  "gold_answer": [
+   [
+    4180.0
+   ]
+  ]
+ },
+ {
+  "id": "q20",
+  "kind": "count",
+  "question": "How many studies have a primary completion date earlier than their start date?",
+  "gold_sql": "select count(*) from marts.dim_trial where primary_completion_date < start_date",
+  "gold_answer": [
+   [
+    6.0
+   ]
+  ]
+ },
+ {
+  "id": "q21",
+  "kind": "count",
+  "question": "How many studies list a condition containing the word 'obesity' (case-insensitive)?",
+  "gold_sql": "select count(*) from marts.dim_trial where conditions ilike '%obesity%'",
+  "gold_answer": [
+   [
+    834.0
+   ]
+  ]
+ },
+ {
+  "id": "q22",
+  "kind": "text",
+  "question": "Which organization leads the most studies whose conditions mention Alzheimer (case-insensitive)?",
+  "gold_sql": "select o.org_name from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) join marts.dim_organization o using (org_id) where b.sponsor_role = 'lead' and t.conditions ilike '%alzheimer%' group by o.org_name order by count(*) desc limit 1",
+  "gold_answer": [
+   [
+    "eli lilly and company"
+   ]
+  ]
+ },
+ {
+  "id": "q23",
+  "kind": "count",
+  "question": "How many different sponsor name spellings were merged into the organization Sanofi?",
+  "gold_sql": "select n_name_variants from marts.dim_organization where org_name = 'Sanofi'",
+  "gold_answer": [
+   [
+    12.0
+   ]
+  ]
+ },
+ {
+  "id": "q24",
+  "kind": "text",
+  "question": "Which organization has the most sponsor name variants merged into it?",
+  "gold_sql": "select org_name from marts.dim_organization order by n_name_variants desc limit 1",
+  "gold_answer": [
+   [
+    "merck & co., inc."
+   ]
+  ]
+ },
+ {
+  "id": "q25",
+  "kind": "text",
+  "question": "Among organizations that lead at least 100 studies, which has the highest share of its led studies terminated?",
+  "gold_sql": "select o.org_name from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) join marts.dim_organization o using (org_id) where b.sponsor_role = 'lead' group by o.org_name having count(*) >= 100 order by avg(case when t.overall_status = 'TERMINATED' then 1.0 else 0 end) desc limit 1",
+  "gold_answer": [
+   [
+    "gilead sciences"
+   ]
+  ]
+ },
+ {
+  "id": "q26",
+  "kind": "count",
+  "question": "How many studies led by Gilead have posted results?",
+  "gold_sql": "select count(*) from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) join marts.dim_organization o using (org_id) where o.org_name = 'Gilead Sciences' and b.sponsor_role = 'lead' and t.has_results",
+  "gold_answer": [
+   [
+    96.0
+   ]
+  ]
+ },
+ {
+  "id": "q27",
+  "kind": "count",
+  "question": "What is the total enrollment across Takeda's active Phase 3 studies (phase exactly Phase 3, Takeda as lead sponsor)?",
+  "gold_sql": "select sum(t.enrollment_count) from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) join marts.dim_organization o using (org_id) where o.org_name = 'Takeda' and b.sponsor_role = 'lead' and t.phase = 'PHASE3' and t.is_active",
+  "gold_answer": [
+   [
+    13484.0
+   ]
+  ]
+ },
+ {
+  "id": "q28",
+  "kind": "count",
+  "question": "How many Phase 1 studies (phase exactly Phase 1) that started in 2025 were led by organizations whose name contains 'Jiangsu'?",
+  "gold_sql": "select count(*) from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) join marts.dim_organization o using (org_id) where b.sponsor_role = 'lead' and o.org_name ilike '%jiangsu%' and t.phase = 'PHASE1' and year(t.start_date) = 2025",
+  "gold_answer": [
+   [
+    41.0
+   ]
+  ]
+ },
+ {
+  "id": "q29",
+  "kind": "count",
+  "question": "How many Phase 2 studies (phase exactly Phase 2) does the organization 'Janssen Research & Development, LLC' lead?",
+  "gold_sql": "select count(*) from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) join marts.dim_organization o using (org_id) where o.org_name = 'Janssen Research & Development, LLC' and b.sponsor_role = 'lead' and t.phase = 'PHASE2'",
+  "gold_answer": [
+   [
+    106.0
+   ]
+  ]
+ },
+ {
+  "id": "q30",
+  "kind": "text",
+  "question": "Which organization leads the most studies with the status WITHDRAWN?",
+  "gold_sql": "select o.org_name from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) join marts.dim_organization o using (org_id) where b.sponsor_role = 'lead' and t.overall_status = 'WITHDRAWN' group by o.org_name order by count(*) desc limit 1",
+  "gold_answer": [
+   [
+    "novartis pharmaceuticals"
+   ]
+  ]
+ },
+ {
+  "id": "q31",
+  "kind": "count",
+  "question": "How many studies led by the organization 'Hoffmann-La Roche' have an estimated (anticipated) primary completion date that is already before the 2026-11-03 snapshot?",
+  "gold_sql": "select count(*) from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) join marts.dim_organization o using (org_id) where o.org_name = 'Hoffmann-La Roche' and b.sponsor_role = 'lead' and t.primary_completion_date_type = 'ESTIMATED' and t.primary_completion_date < date '2026-11-03'",
+  "gold_answer": [
+   [
+    13.0
+   ]
+  ]
+ },
+ {
+  "id": "q32",
+  "kind": "count",
+  "question": "How many studies started in the first quarter (January through March) of 2025?",
+  "gold_sql": "select count(*) from marts.dim_trial where start_date >= date '2025-01-01' and start_date < date '2025-04-01'",
+  "gold_answer": [
+   [
+    1381.0
+   ]
+  ]
+ },
+ {
+  "id": "q33",
+  "kind": "count",
+  "question": "How many upcoming readouts (active Phase 2, 2/3 or 3 studies with primary completion in the 12 months after 2026-11-03) does AbbVie have as the lead sponsor?",
+  "gold_sql": "select count(*) from marts.mart_upcoming_readouts where org_name = 'AbbVie' and sponsor_role = 'lead'",
+  "gold_answer": [
+   [
+    33.0
+   ]
+  ]
+ },
+ {
+  "id": "q34",
+  "kind": "list",
+  "question": "Which organizations have more than 20 upcoming active Phase 3 or Phase 2/3 readouts in the 12 months after 2026-11-03 (any role)? List their names.",
+  "gold_sql": "select org_name from marts.mart_org_pipeline where n_phase3_readouts_12m > 20",
+  "gold_answer": [
+   [
+    "astrazeneca"
+   ],
+   [
+    "hoffmann-la roche"
+   ],
+   [
+    "pfizer"
+   ]
+  ]
+ },
+ {
+  "id": "q35",
+  "kind": "count",
+  "question": "How many Phase 4 studies does Novo Nordisk lead?",
+  "gold_sql": "select count(*) from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) join marts.dim_organization o using (org_id) where o.org_name = 'Novo Nordisk A/S' and b.sponsor_role = 'lead' and t.phase = 'PHASE4'",
+  "gold_answer": [
+   [
+    10.0
+   ]
+  ]
+ },
+ {
+  "id": "q36",
+  "kind": "text",
+  "question": "Which phase code has the most active studies led by Pfizer?",
+  "gold_sql": "select t.phase from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) join marts.dim_organization o using (org_id) where o.org_name = 'Pfizer' and b.sponsor_role = 'lead' and t.is_active group by t.phase order by count(*) desc limit 1",
+  "gold_answer": [
+   [
+    "phase3"
+   ]
+  ]
+ },
+ {
+  "id": "q37",
+  "kind": "text",
+  "question": "Which organization has the most active Phase 3 or Phase 2/3 studies where it is the lead sponsor (collaborations not counted)?",
+  "gold_sql": "select o.org_name from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) join marts.dim_organization o using (org_id) where b.sponsor_role = 'lead' and t.is_active and t.phase in ('PHASE3', 'PHASE2_PHASE3') group by o.org_name order by count(*) desc limit 1",
+  "gold_answer": [
+   [
+    "astrazeneca"
+   ]
+  ]
+ },
+ {
+  "id": "q38",
+  "kind": "number",
+  "question": "For completed studies led by Pfizer, what is the median number of days between the start date and the primary completion date?",
+  "gold_sql": "select median(datediff('day', t.start_date, t.primary_completion_date)) from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) join marts.dim_organization o using (org_id) where o.org_name = 'Pfizer' and b.sponsor_role = 'lead' and t.overall_status = 'COMPLETED'",
+  "gold_answer": [
+   [
+    316.5
+   ]
+  ]
+ },
+ {
+  "id": "q39",
+  "kind": "count",
+  "question": "Among organizations that lead at least 10 active studies, how many lead more active Phase 3 or Phase 2/3 studies than active Phase 2 studies (phase exactly Phase 2)?",
+  "gold_sql": "select count(*) from (select b.org_id, count(*) filter (where t.phase in ('PHASE3', 'PHASE2_PHASE3')) as p3, count(*) filter (where t.phase = 'PHASE2') as p2, count(*) as n from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) where b.sponsor_role = 'lead' and t.is_active group by b.org_id) where n >= 10 and p3 > p2",
+  "gold_answer": [
+   [
+    112.0
+   ]
+  ]
+ },
+ {
+  "id": "q40",
+  "kind": "count",
+  "question": "How many studies led by AstraZeneca also have at least one collaborator organization?",
+  "gold_sql": "select count(distinct b.nct_id) from marts.bridge_trial_organization b join marts.dim_organization o using (org_id) where o.org_name = 'AstraZeneca' and b.sponsor_role = 'lead' and exists (select 1 from marts.bridge_trial_organization c where c.nct_id = b.nct_id and c.sponsor_role = 'collaborator')",
+  "gold_answer": [
+   [
+    270.0
+   ]
+  ]
+ },
+ {
+  "id": "q41",
+  "kind": "number",
+  "question": "By what percent did the number of studies started in 2024 change compared with 2023? Round to one decimal place.",
+  "gold_sql": "select round(100.0 * (count(*) filter (where year(start_date) = 2024) - count(*) filter (where year(start_date) = 2023)) / count(*) filter (where year(start_date) = 2023), 1) from marts.dim_trial",
+  "gold_answer": [
+   [
+    -2.2
+   ]
+  ]
+ },
+ {
+  "id": "q42",
+  "kind": "count",
+  "question": "How many distinct organizations appear as collaborators on studies led by Merck & Co.?",
+  "gold_sql": "select count(distinct c.org_id) from marts.bridge_trial_organization l join marts.dim_organization lo on lo.org_id = l.org_id join marts.bridge_trial_organization c on c.nct_id = l.nct_id and c.sponsor_role = 'collaborator' where lo.org_name = 'Merck & Co., Inc.' and l.sponsor_role = 'lead'",
+  "gold_answer": [
+   [
+    16.0
+   ]
+  ]
+ },
+ {
+  "id": "q43",
+  "kind": "number",
+  "question": "What percentage of the estimated (anticipated) primary completion dates in 2027 belong to Phase 3 or Phase 2/3 studies? Round to one decimal place.",
+  "gold_sql": "select round(100.0 * count(*) filter (where t.phase in ('PHASE3', 'PHASE2_PHASE3')) / count(*), 1) from marts.fct_trial_events e join marts.dim_trial t using (nct_id) where e.event_type = 'primary_completion' and e.date_type = 'ESTIMATED' and year(e.event_date) = 2027",
+  "gold_answer": [
+   [
+    18.9
+   ]
+  ]
+ },
+ {
+  "id": "q44",
+  "kind": "count",
+  "question": "How many studies list conditions that mention both diabetes and obesity (case-insensitive)?",
+  "gold_sql": "select count(*) from marts.dim_trial where conditions ilike '%diabetes%' and conditions ilike '%obesity%'",
+  "gold_answer": [
+   [
+    128.0
+   ]
+  ]
+ },
+ {
+  "id": "q45",
+  "kind": "text",
+  "question": "Which quarter of 2026 had the most study starts? Answer in the form 2026-Q1.",
+  "gold_sql": "select d.year_quarter from marts.dim_trial t join marts.dim_date d on d.date_day = t.start_date where d.year = 2026 group by d.year_quarter order by count(*) desc limit 1",
+  "gold_answer": [
+   [
+    "2026-q3"
+   ]
+  ]
+ },
+ {
+  "id": "q46",
+  "kind": "text",
+  "question": "Among the active studies Eli Lilly leads, which phase code has the second highest number of studies?",
+  "gold_sql": "select t.phase from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) join marts.dim_organization o using (org_id) where o.org_name = 'Eli Lilly and Company' and b.sponsor_role = 'lead' and t.is_active group by t.phase order by count(*) desc limit 1 offset 1",
+  "gold_answer": [
+   [
+    "phase1"
+   ]
+  ]
+ },
+ {
+  "id": "q47",
+  "kind": "count",
+  "question": "How many organizations lead more than 50 studies but have only one sponsor name variant?",
+  "gold_sql": "select count(*) from marts.dim_organization where n_trials_as_lead > 50 and n_name_variants = 1",
+  "gold_answer": [
+   [
+    66.0
+   ]
+  ]
+ },
+ {
+  "id": "q48",
+  "kind": "count",
+  "question": "How many studies among the upcoming readouts (12 months after 2026-11-03) are attached to more than one organization?",
+  "gold_sql": "select count(*) from (select nct_id from marts.mart_upcoming_readouts group by nct_id having count(distinct org_id) > 1)",
+  "gold_answer": [
+   [
+    181.0
+   ]
+  ]
+ }
+]

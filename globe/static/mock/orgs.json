@@ -1,0 +1,54 @@
+{
+ "orgs": [
+  {
+   "org_id": 1,
+   "org_name": "Example Pharma",
+   "n_trials": 1520
+  },
+  {
+   "org_id": 2,
+   "org_name": "Sample Biotherapeutics",
+   "n_trials": 1185
+  },
+  {
+   "org_id": 3,
+   "org_name": "Demo Oncology",
+   "n_trials": 964
+  },
+  {
+   "org_id": 4,
+   "org_name": "Placeholder Biologics",
+   "n_trials": 812
+  },
+  {
+   "org_id": 5,
+   "org_name": "Mock Vaccines",
+   "n_trials": 655
+  },
+  {
+   "org_id": 6,
+   "org_name": "Example Neuroscience",
+   "n_trials": 540
+  },
+  {
+   "org_id": 7,
+   "org_name": "Sample Cardio",
+   "n_trials": 488
+  },
+  {
+   "org_id": 8,
+   "org_name": "Demo Gene Therapy",
+   "n_trials": 402
+  },
+  {
+   "org_id": 9,
+   "org_name": "Placeholder Immunology",
+   "n_trials": 377
+  },
+  {
+   "org_id": 10,
+   "org_name": "Mock Rare Disease",
+   "n_trials": 291
+  }
+ ]
+}

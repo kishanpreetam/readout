@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Tables loaded by `python -m readout load` from the JSON downloads in data/raw.
+    schema: raw
+    tables:
+      - name: ct_studies
+        description: One row per ClinicalTrials.gov study (interventional, industry lead sponsor, primary completion on or after 2020-01-01).
+      - name: ct_collaborators
+        description: Collaborator organizations listed on each study.
+      - name: ct_conditions
+        description: Conditions listed on each study.
+      - name: ct_interventions
+        description: Interventions listed on each study.
+      - name: ct_primary_outcomes
+        description: Primary outcome measures listed on each study.
+      - name: ct_sites
+        description: Sites listed on each study, in registry order, loaded by `python -m readout sites-load` from data/raw/ctgov_sites (`make sites`).
+      - name: sec_companies
+        description: The SEC company universe (empty if SEC refused the download).
+      - name: sec_facts
+        description: Selected XBRL facts from SEC companyfacts for the universe (empty if SEC refused the download).
+      - name: sponsor_links
+        description: Output of the Python sponsor-to-company linker, one row per distinct sponsor name.
+      - name: sponsor_organizations
+        description: Output of the Python sponsor resolver, one row per distinct sponsor name with its organization.

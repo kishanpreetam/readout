@@ -1,0 +1,15 @@
+{
+  "as_of_date": "2026-11-03",
+  "by_kind": {
+    "model": {
+      "success": 24
+    },
+    "test": {
+      "pass": 73,
+      "warn": 1
+    }
+  },
+  "warnings": [
+    "expression_is_true_dim_trial_primary_completion_date__primary_completion_date_start_date__start_date_is_not_null_and_primary_completion_date_is_not_null"
+  ]
+}

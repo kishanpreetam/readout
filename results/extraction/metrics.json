@@ -1,0 +1,79 @@
+{
+  "sample_size": 80,
+  "seed": 7,
+  "baseline": {
+    "conditions": {
+      "precision": 0.311,
+      "recall": 0.647,
+      "f1": 0.42,
+      "recall_on_items_mentioned_in_text": 0.938,
+      "pred": 325,
+      "pred_correct": 101,
+      "gold": 119,
+      "gold_found": 77,
+      "gold_mentioned": 65,
+      "gold_mentioned_found": 61
+    },
+    "interventions": {
+      "precision": 0.524,
+      "recall": 0.775,
+      "f1": 0.625,
+      "recall_on_items_mentioned_in_text": 0.877,
+      "pred": 250,
+      "pred_correct": 131,
+      "gold": 142,
+      "gold_found": 110,
+      "gold_mentioned": 81,
+      "gold_mentioned_found": 71
+    },
+    "primary_endpoint": {
+      "trials_with_gold": 80,
+      "predicted": 4,
+      "match": 3,
+      "match_rate_over_trials": 0.037
+    }
+  },
+  "model": "claude-opus-5-5",
+  "llm": {
+    "conditions": {
+      "precision": 0.695,
+      "recall": 0.681,
+      "f1": 0.688,
+      "recall_on_items_mentioned_in_text": 0.938,
+      "pred": 105,
+      "pred_correct": 73,
+      "gold": 119,
+      "gold_found": 81,
+      "gold_mentioned": 65,
+      "gold_mentioned_found": 61
+    },
+    "interventions": {
+      "precision": 0.828,
+      "recall": 0.866,
+      "f1": 0.846,
+      "recall_on_items_mentioned_in_text": 0.988,
+      "pred": 145,
+      "pred_correct": 120,
+      "gold": 142,
+      "gold_found": 123,
+      "gold_mentioned": 81,
+      "gold_mentioned_found": 80
+    },
+    "primary_endpoint": {
+      "trials_with_gold": 80,
+      "predicted": 36,
+      "match": 23,
+      "match_rate_over_trials": 0.287
+    }
+  },
+  "llm_trials_answered": 80,
+  "llm_disagreements_total": 114,
+  "hand_review_of_sampled_disagreements": {
+    "reviewed": 40,
+    "valid_but_not_registered": 7,
+    "same_concept_different_wording": 16,
+    "registry_item_not_in_text": 3,
+    "granularity": 14,
+    "clear_extraction_errors": 0
+  }
+}

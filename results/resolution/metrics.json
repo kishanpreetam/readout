@@ -1,0 +1,451 @@
+{
+  "gold_groups": {
+    "groups": 20,
+    "gold_member_names": 209,
+    "labeled_not_member_names": 58,
+    "unsure_names_excluded": 5,
+    "name_recall_micro": 0.378,
+    "name_precision_micro": 0.975,
+    "trial_recall_micro": 0.848,
+    "pairwise_precision": 0.945,
+    "pairwise_recall": 0.191,
+    "pairwise_counts": {
+      "tp": 307,
+      "fp": 18,
+      "fn": 1304
+    },
+    "recall_by_kind_of_name": {
+      "separately_named_subsidiary": {
+        "names": 119,
+        "found": 8,
+        "recall": 0.067
+      },
+      "spelling_or_unit_variant": {
+        "names": 42,
+        "found": 35,
+        "recall": 0.833
+      },
+      "states_its_parent": {
+        "names": 48,
+        "found": 36,
+        "recall": 0.75
+      }
+    },
+    "labels_missing_from_data": [],
+    "unlabeled_names_inside_predicted_groups": [],
+    "per_group": [
+      {
+        "group": "AbbVie",
+        "predicted_name": "AbbVie",
+        "gold_names": 10,
+        "predicted_names": 1,
+        "correct_names": 1,
+        "wrongly_merged_names": [],
+        "name_recall": 0.1,
+        "name_precision": 1.0,
+        "trial_recall": 0.832,
+        "missed_names": [
+          "Allergan",
+          "Allergan Sales, LLC",
+          "Cerevel Therapeutics, LLC",
+          "ImmunoGen, Inc.",
+          "Landos Biopharma Inc.",
+          "Naurex, Inc, an affiliate of Allergan plc",
+          "Pharmacyclics LLC.",
+          "Pharmacyclics Switzerland GmbH",
+          "Soliton"
+        ]
+      },
+      {
+        "group": "Amgen",
+        "predicted_name": "Amgen",
+        "gold_names": 3,
+        "predicted_names": 1,
+        "correct_names": 1,
+        "wrongly_merged_names": [],
+        "name_recall": 0.333,
+        "name_precision": 1.0,
+        "trial_recall": 0.983,
+        "missed_names": [
+          "Five Prime Therapeutics, Inc.",
+          "Horizon Therapeutics Ireland DAC"
+        ]
+      },
+      {
+        "group": "AstraZeneca",
+        "predicted_name": "AstraZeneca",
+        "gold_names": 11,
+        "predicted_names": 1,
+        "correct_names": 1,
+        "wrongly_merged_names": [],
+        "name_recall": 0.091,
+        "name_precision": 1.0,
+        "trial_recall": 0.822,
+        "missed_names": [
+          "Acerta Pharma BV",
+          "Achillion, a wholly owned subsidiary of Alexion",
+          "Alexion Pharmaceuticals, Inc.",
+          "Amolyt Pharma",
+          "CinCor Pharma, Inc.",
+          "Fusion Pharmaceuticals Inc.",
+          "Gracell Biotechnologies (Shanghai) Co., Ltd.",
+          "MedImmune LLC",
+          "Portola Pharmaceuticals",
+          "Portola Pharmaceuticals, LLC (a wholly owned subsidiary of Alexion Pharmaceuticals)"
+        ]
+      },
+      {
+        "group": "Bayer",
+        "predicted_name": "Bayer",
+        "gold_names": 5,
+        "predicted_names": 1,
+        "correct_names": 1,
+        "wrongly_merged_names": [],
+        "name_recall": 0.2,
+        "name_precision": 1.0,
+        "trial_recall": 0.931,
+        "missed_names": [
+          "AskBio France, SAS, a subsidiary of AskBio Inc.",
+          "AskBio Inc",
+          "BlueRock Therapeutics",
+          "Vividion Therapeutics, Inc."
+        ]
+      },
+      {
+        "group": "Boehringer Ingelheim",
+        "predicted_name": "Boehringer Ingelheim",
+        "gold_names": 1,
+        "predicted_names": 1,
+        "correct_names": 1,
+        "wrongly_merged_names": [],
+        "name_recall": 1.0,
+        "name_precision": 1.0,
+        "trial_recall": 1.0,
+        "missed_names": []
+      },
+      {
+        "group": "Bristol-Myers Squibb",
+        "predicted_name": "Bristol-Myers Squibb",
+        "gold_names": 12,
+        "predicted_names": 7,
+        "correct_names": 7,
+        "wrongly_merged_names": [],
+        "name_recall": 0.583,
+        "name_precision": 1.0,
+        "trial_recall": 0.926,
+        "missed_names": [
+          "2seventy bio",
+          "Mirati Therapeutics Inc.",
+          "MyoKardia, Inc.",
+          "RayzeBio, Inc.",
+          "Turning Point Therapeutics, Inc."
+        ]
+      },
+      {
+        "group": "Eli Lilly",
+        "predicted_name": "Eli Lilly and Company",
+        "gold_names": 14,
+        "predicted_names": 8,
+        "correct_names": 7,
+        "wrongly_merged_names": [
+          "Vaccinex Inc."
+        ],
+        "name_recall": 0.5,
+        "name_precision": 0.875,
+        "trial_recall": 0.924,
+        "missed_names": [
+          "Akouos, Inc.",
+          "Dermira, Inc.",
+          "Loxo Oncology, Inc.",
+          "Prevail Therapeutics",
+          "Sigilon Therapeutics, Inc.",
+          "Versanis Bio, Inc.",
+          "Verve Therapeutics, Inc."
+        ]
+      },
+      {
+        "group": "GSK",
+        "predicted_name": "GlaxoSmithKline",
+        "gold_names": 9,
+        "predicted_names": 1,
+        "correct_names": 1,
+        "wrongly_merged_names": [],
+        "name_recall": 0.111,
+        "name_precision": 1.0,
+        "trial_recall": 0.805,
+        "missed_names": [
+          "35Pharma Inc., a GSK company",
+          "Affinivax, Inc.",
+          "Bellus Health Inc. - a GSK company",
+          "IDRX, Inc., a wholly owned subsidiary of GSK, LLC",
+          "RAPT Therapeutics, Inc., a member of the GSK plc group of companies",
+          "Sierra Oncology LLC - a GSK company",
+          "Tesaro, Inc.",
+          "ViiV Healthcare"
+        ]
+      },
+      {
+        "group": "Incyte",
+        "predicted_name": "Incyte Corporation",
+        "gold_names": 4,
+        "predicted_names": 3,
+        "correct_names": 3,
+        "wrongly_merged_names": [],
+        "name_recall": 0.75,
+        "name_precision": 1.0,
+        "trial_recall": 0.973,
+        "missed_names": [
+          "Escient Pharmaceuticals, Inc"
+        ]
+      },
+      {
+        "group": "Jiangsu Hengrui",
+        "predicted_name": "Jiangsu HengRui Medicine Co., Ltd.",
+        "gold_names": 11,
+        "predicted_names": 1,
+        "correct_names": 1,
+        "wrongly_merged_names": [],
+        "name_recall": 0.091,
+        "name_precision": 1.0,
+        "trial_recall": 0.498,
+        "missed_names": [
+          "Beijing Suncadia Pharmaceuticals Co., Ltd",
+          "Chengdu Suncadia Medicine Co., Ltd.",
+          "Fujian Shengdi Pharmaceutical Co., Ltd.",
+          "Guangdong Hengrui Pharmaceutical Co., Ltd",
+          "Hengrui Therapeutics, Inc.",
+          "Jiangsu Hengrui Pharmaceutical Co., Ltd.",
+          "Shandong Suncadia Medicine Co., Ltd.",
+          "Shanghai Hengrui Pharmaceutical Co., Ltd.",
+          "Shanghai Shengdi Pharmaceutical Co., Ltd",
+          "Suzhou Suncadia Biopharmaceuticals Co., Ltd."
+        ]
+      },
+      {
+        "group": "Johnson & Johnson",
+        "predicted_name": "Janssen Research & Development, LLC",
+        "gold_names": 39,
+        "predicted_names": 10,
+        "correct_names": 10,
+        "wrongly_merged_names": [],
+        "name_recall": 0.256,
+        "name_precision": 1.0,
+        "trial_recall": 0.599,
+        "missed_names": [
+          "Abiomed Inc.",
+          "Actelion",
+          "Ambrx, Inc.",
+          "Auris Health, Inc.",
+          "Biosense Webster, Inc.",
+          "Cerenovus, Part of DePuy Synthes Products, Inc.",
+          "DePuy International",
+          "DePuy Orthopaedics",
+          "DePuy Synthes Products, Inc.",
+          "Ethicon Endo-Surgery",
+          "Ethicon, Inc.",
+          "Intra-Cellular Therapies, Inc.",
+          "Janssen Vaccines & Prevention B.V.",
+          "Janssen-Cilag International NV",
+          "Janssen-Cilag Ltd.",
+          "Janssen-Cilag, S.A.",
+          "Johnson & Johnson",
+          "Johnson & Johnson Enterprise Innovation Inc.",
+          "Johnson & Johnson K.K. Medical Company",
+          "Johnson & Johnson Medical (Shanghai) Ltd.",
+          "Johnson & Johnson Medical Companies",
+          "Johnson & Johnson Pharmaceutical Research & Development, L.L.C.",
+          "Johnson & Johnson Private Limited",
+          "Johnson & Johnson Surgical Vision, Inc.",
+          "Johnson & Johnson Vision Care, Inc.",
+          "Mentor Worldwide, LLC",
+          "Momenta Pharmaceuticals, Inc.",
+          "Shockwave Medical, Inc.",
+          "Xian-Janssen Pharmaceutical Ltd."
+        ]
+      },
+      {
+        "group": "Merck & Co.",
+        "predicted_name": "Merck & Co., Inc.",
+        "gold_names": 15,
+        "predicted_names": 14,
+        "correct_names": 14,
+        "wrongly_merged_names": [],
+        "name_recall": 0.933,
+        "name_precision": 1.0,
+        "trial_recall": 0.998,
+        "missed_names": [
+          "MSD R&D (China) Co., Ltd."
+        ]
+      },
+      {
+        "group": "Novartis",
+        "predicted_name": "Novartis Pharmaceuticals",
+        "gold_names": 12,
+        "predicted_names": 3,
+        "correct_names": 3,
+        "wrongly_merged_names": [],
+        "name_recall": 0.25,
+        "name_precision": 1.0,
+        "trial_recall": 0.956,
+        "missed_names": [
+          "Advanced Accelerator Applications",
+          "Anthos Therapeutics, Inc.",
+          "Chinook Therapeutics, Inc.",
+          "Chinook Therapeutics, Inc. (formerly Aduro)",
+          "Endocyte",
+          "Gyroscope Therapeutics Limited",
+          "MorphoSys AG",
+          "Novartis Gene Therapies",
+          "Regulus Therapeutics Inc."
+        ]
+      },
+      {
+        "group": "Novo Nordisk",
+        "predicted_name": "Novo Nordisk A/S",
+        "gold_names": 5,
+        "predicted_names": 2,
+        "correct_names": 2,
+        "wrongly_merged_names": [],
+        "name_recall": 0.4,
+        "name_precision": 1.0,
+        "trial_recall": 0.957,
+        "missed_names": [
+          "Cardior Pharmaceuticals GmbH",
+          "Forma Therapeutics, Inc.",
+          "Inversago Pharma Inc."
+        ]
+      },
+      {
+        "group": "Pfizer",
+        "predicted_name": "Pfizer",
+        "gold_names": 9,
+        "predicted_names": 8,
+        "correct_names": 8,
+        "wrongly_merged_names": [],
+        "name_recall": 0.889,
+        "name_precision": 1.0,
+        "trial_recall": 0.999,
+        "missed_names": [
+          "Array BioPharma"
+        ]
+      },
+      {
+        "group": "Regeneron",
+        "predicted_name": "Regeneron Pharmaceuticals",
+        "gold_names": 1,
+        "predicted_names": 1,
+        "correct_names": 1,
+        "wrongly_merged_names": [],
+        "name_recall": 1.0,
+        "name_precision": 1.0,
+        "trial_recall": 1.0,
+        "missed_names": []
+      },
+      {
+        "group": "Roche",
+        "predicted_name": "Hoffmann-La Roche",
+        "gold_names": 15,
+        "predicted_names": 1,
+        "correct_names": 1,
+        "wrongly_merged_names": [],
+        "name_recall": 0.067,
+        "name_precision": 1.0,
+        "trial_recall": 0.675,
+        "missed_names": [
+          "89bio, Inc.",
+          "Carmot Australia First Pty Ltd",
+          "Carmot Therapeutics, Inc.",
+          "Chugai Pharmaceutical",
+          "Foundation Medicine",
+          "Genentech, Inc.",
+          "Poseida Therapeutics, Inc.",
+          "Roche Diabetes Care",
+          "Roche Diagnostic Ltd.",
+          "Roche Molecular Systems, Inc",
+          "Roche Pharma AG",
+          "Roche-Genentech",
+          "Spark Therapeutics, Inc.",
+          "Telavant, Inc."
+        ]
+      },
+      {
+        "group": "Sanofi",
+        "predicted_name": "Sanofi",
+        "gold_names": 15,
+        "predicted_names": 12,
+        "correct_names": 11,
+        "wrongly_merged_names": [
+          "Opella Healthcare Group SAS, a Sanofi Company"
+        ],
+        "name_recall": 0.733,
+        "name_precision": 0.917,
+        "trial_recall": 0.947,
+        "missed_names": [
+          "Blueprint Medicines Corporation",
+          "Kymab Limited",
+          "Translate Bio, Inc.",
+          "Vigil Neuroscience, Inc."
+        ]
+      },
+      {
+        "group": "Sino Biopharmaceutical",
+        "predicted_name": "Chia Tai Tianqing Pharmaceutical Group Co., Ltd.",
+        "gold_names": 7,
+        "predicted_names": 2,
+        "correct_names": 2,
+        "wrongly_merged_names": [],
+        "name_recall": 0.286,
+        "name_precision": 1.0,
+        "trial_recall": 0.714,
+        "missed_names": [
+          "Beijing Tide Pharmaceutical Co., Ltd",
+          "Chia Tai Tianqing Pharmaceutical Group Nanjing Shunxin Pharmaceutical Co., Ltd.",
+          "F-star Therapeutics, Inc.",
+          "Nanjing Chia-tai Tianqing Pharmaceutical",
+          "Shanghai Chia Tai Tianqing Pharmaceutical Technology Development Co., Ltd."
+        ]
+      },
+      {
+        "group": "Takeda",
+        "predicted_name": "Takeda",
+        "gold_names": 11,
+        "predicted_names": 3,
+        "correct_names": 3,
+        "wrongly_merged_names": [],
+        "name_recall": 0.273,
+        "name_precision": 1.0,
+        "trial_recall": 0.769,
+        "missed_names": [
+          "Ariad Pharmaceuticals",
+          "Baxalta Innovations GmbH, now part of Shire",
+          "Baxalta now part of Shire",
+          "GammaDelta Therapeutics Limited",
+          "Millennium Pharmaceuticals, Inc.",
+          "Nimbus Lakshmi, Inc.",
+          "Shire",
+          "Tigenix S.A.U."
+        ]
+      }
+    ]
+  },
+  "pair_audit": {
+    "merged": {
+      "pairs": 60,
+      "same": 49,
+      "different": 10,
+      "unsure": 1,
+      "share_same": 0.831
+    },
+    "near_miss": {
+      "pairs": 60,
+      "same": 5,
+      "different": 53,
+      "unsure": 2,
+      "share_same": 0.086
+    }
+  },
+  "pair_audit_population": {
+    "merged_orgs": 313,
+    "near_miss_pairs": 3446
+  }
+}

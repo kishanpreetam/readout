@@ -1,0 +1,23 @@
+{
+  "_about": "Search terms used to find every sponsor name that might belong to each of the 20 corporate groups whose names lead the most studies in the snapshot. Each hit was then judged by hand; see labels/resolution_gold_groups.csv and docs/labeling.md.",
+  "AstraZeneca": ["astrazeneca", "astra zeneca", "medimmune", "alexion", "acerta", "achillion", "portola", "syntimmune", "pearl therapeutics", "ardea", "fusion pharma", "gracell", "amolyt", "cincor", "neogene", "esobiotec", "zeneca"],
+  "Pfizer": ["pfizer", "wyeth", "hospira", "seagen", "seattle genetics", "arena", "medivation", "array biopharma", "global blood", "trillium", "anacor", "metsera", "biohaven", "amplyx", "revira", "upjohn"],
+  "Novartis": ["novartis", "sandoz", "advanced accelerator", "avexis", "medicines company", "chinook", "morphosys", "mariana", "tourmaline", "regulus", "anthos", "endocyte", "gyroscope", "alcon"],
+  "Eli Lilly": ["lilly", "loxo", "dermira", "prevail", "point biopharma", "dice therapeutics", "morphic", "imclone", "akouos", "verve", "scorpion", "ajax", "sigilon", "versanis", "elanco"],
+  "Merck & Co.": ["merck", "msd", "acceleron", "prometheus", "harpoon", "imago", "peloton", "arqule", "immune design", "oncoimmune", "velosbio", "cidara", "terns", "verona", "organon", "schering"],
+  "AbbVie": ["abbvie", "allergan", "pharmacyclics", "cerevel", "immunogen", "landos", "aliada", "stemcentrx", "soliton", "naurex", "forest lab", "abbott"],
+  "Roche": ["roche", "genentech", "chugai", "foundation medicine", "spark therapeutics", "ventana", "carmot", "poseida", "89bio", "telavant"],
+  "GSK": ["gsk", "glaxo", "viiv", "tesaro", "sierra oncology", "bellus", "affinivax", "stiefel", "35pharma", "rapt", "idrx", "haleon", "boston pharmaceuticals"],
+  "Jiangsu Hengrui": ["hengrui", "suncadia", "shengdi"],
+  "Boehringer Ingelheim": ["boehringer"],
+  "Bristol-Myers Squibb": ["bristol", "celgene", "juno", "myokardia", "turning point", "mirati", "karuna", "rayzebio", "receptos", "impact biomedicines", "2seventy"],
+  "Johnson & Johnson": ["janssen", "johnson", "actelion", "alios", "cilag", "ethicon", "depuy", "auris", "abiomed", "momenta", "intra-cellular", "shockwave", "ambrx", "proteologix", "mentor", "biosense", "neutrogena", "cerenovus", "kenvue"],
+  "Sanofi": ["sanofi", "genzyme", "ablynx", "bioverativ", "kadmon", "principia", "provention", "synthorx", "translate bio", "kymab", "amunix", "inhibrx", "blueprint", "vigil", "vicebio", "opella"],
+  "Novo Nordisk": ["novo nordisk", "dicerna", "emisphere", "forma therapeutics", "inversago", "cardior"],
+  "Amgen": ["amgen", "horizon", "chemocentryx", "five prime", "onyx", "teneobio"],
+  "Sino Biopharmaceutical": ["chia tai", "tianqing", "sino biopharm", "beijing tide", "f-star"],
+  "Takeda": ["takeda", "shire", "baxalta", "millennium", "ariad", "tigenix", "nimbus", "maverick", "gammadelta"],
+  "Regeneron": ["regeneron"],
+  "Bayer": ["bayer", "bluerock", "askbio", "asklepios", "vividion"],
+  "Incyte": ["incyte", "escient"]
+}

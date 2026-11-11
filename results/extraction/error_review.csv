@@ -1,0 +1,41 @@
+nct_id,disagreement,item,other_side,category,note
+NCT02846532,condition_extra,single ventricle physiology,Thrombosis,valid_but_not_registered,population condition named in the text; registry lists only Thrombosis
+NCT02846532,condition_extra,thromboprophylaxis after Fontan procedure,Thrombosis,same_concept_different_wording,"thrombosis prevention, worded as the procedure"
+NCT03006705,condition_extra,esophagogastric junction cancer,Gastric Cancer,valid_but_not_registered,the text names gastroesophageal junction cancer; registry lists gastric cancer only
+NCT03120949,intervention_missed,Concomitant treatment,olokizumab,registry_item_not_in_text,"'Concomitant treatment' is a registry placeholder, not a drug name"
+NCT03174522,condition_missed,Peripheral Arterial Disease (PAD),ischemic ulcers; critical limb ischemia; diabetes mellitus,granularity,critical limb ischemia is the severe form of PAD
+NCT03266159,condition_extra,Ras-mutated non-small cell lung cancer,Solid Tumours,granularity,specific tumor types vs 'Solid Tumours'
+NCT03266159,condition_extra,Ras-mutated pancreatic adenocarcinoma,Solid Tumours,granularity,specific tumor types vs 'Solid Tumours'
+NCT03291470,condition_extra,osteoarthritis of the knee,Degenerative Osteoarthritis,granularity,knee osteoarthritis vs degenerative osteoarthritis
+NCT03291470,condition_missed,Degenerative Osteoarthritis,osteoarthritis of the knee,granularity,same pair as above
+NCT03508167,intervention_extra,paracetamol,Dorilax®,same_concept_different_wording,component of the registered combination product Dorilax
+NCT03544723,condition_missed,Lymphoma,solid tumors,registry_item_not_in_text,lymphoma is not mentioned in the title or summary
+NCT03719690,condition_missed,HNSCC,head and neck squamous cell carcinoma with HRAS mutations,same_concept_different_wording,HNSCC is the abbreviation
+NCT03961555,intervention_extra,human rabies immune globulin,SYN023; HRIG (HyperRab); Rabies vaccine,same_concept_different_wording,HRIG is human rabies immune globulin
+NCT04143061,condition_extra,meningococcal disease,Meningococcal Immunization; Healthy Volunteers,same_concept_different_wording,meningococcal disease prevention vs immunization
+NCT04143061,intervention_missed,"Meningococcal polysaccharide (serogroups A,C,Y and W-135) diphtheria toxoid conjugate vaccine",MenACYW conjugate vaccine,same_concept_different_wording,MenACYW conjugate vaccine is the same vaccine
+NCT04604548,condition_missed,Chronic Progressive External Ophthalmoplegia (CPEO),mitochondrial disease due to m.3243A>G mutation,granularity,model gave one umbrella condition instead of listing CPEO
+NCT04604548,condition_missed,Maternally Inherited Diabetes and Deafness (MIDD),mitochondrial disease due to m.3243A>G mutation,granularity,model gave one umbrella condition instead of listing MIDD
+NCT04604548,condition_missed,Mitochondrial Diseases,mitochondrial disease due to m.3243A>G mutation,same_concept_different_wording,"mitochondrial disease, singular vs plural"
+NCT04604548,condition_missed,"Mitochondrial Encephalomyopathy, Lactic Acidosis and Stroke Like Episodes (MELAS)",mitochondrial disease due to m.3243A>G mutation,granularity,model gave one umbrella condition instead of listing MELAS
+NCT04628494,intervention_extra,oxaliplatin,Epcoritamab; Investigator's Choice Chemotherapy,valid_but_not_registered,part of the investigator's choice chemotherapy named in the text
+NCT04662710,intervention_missed,Capecitabine,lenvatinib; pembrolizumab,registry_item_not_in_text,capecitabine is not named in the title or summary
+NCT04992065,condition_extra,heart disease,Atherosclerotic Cardiovascular Disease,granularity,heart disease vs atherosclerotic cardiovascular disease
+NCT04992065,condition_extra,high blood cholesterol,Atherosclerotic Cardiovascular Disease,valid_but_not_registered,high cholesterol is treated in the study population
+NCT05607641,intervention_extra,Neospastil (ketorolac tromethamine / pitofenone hydrochloride / fenpiverinium bromide),"Ketorolac tromethamine, solution for injection then Neospastil, film-coated tablets; Ketorolac tromethamine, solution for injection then Ketorolac tromethamine, coated tablets; Neospastil, solution for injection then Neospastil, film-coated tablets",same_concept_different_wording,the product and its ingredients
+NCT05629962,condition_missed,Severe Acute Respiratory Syndrome Coronavirus 2 (SARS CoV 2 Infection),COVID-19,same_concept_different_wording,COVID-19 is SARS-CoV-2 infection
+NCT05719311,intervention_extra,porcine pancreatic enzymes,adrulipase,valid_but_not_registered,comparator enzyme therapy named in the text
+NCT05806918,intervention_extra,valaciclovir hydrochloride,Recombinant Human Interferon α-2b Gel (After the Alteration); Recombinant Human Interferon α-2b Gel (Before the Alteration),valid_but_not_registered,named in the text; not a registered intervention
+NCT05841394,intervention_missed,Esomeprazole 40mg,Ilaprazole Sodium for Injection; Esomeprazole Sodium for Injection,same_concept_different_wording,"esomeprazole, different dose wording"
+NCT05874713,condition_missed,Respiratory Tract Infections,influenza,granularity,influenza vs respiratory tract infections
+NCT05874713,intervention_extra,MF59-adjuvanted H5N6 cell culture-derived influenza vaccine (aH5N6c),aH5N8c on Day 1; aH5N6c on Day 1; aH5N8c on Day 22; aH5N6c on Day 22; aH5N8c on Day 202,same_concept_different_wording,same vaccine; registry adds the dosing day
+NCT05874713,intervention_missed,aH5N8c on Day 202,MF59-adjuvanted H5N8 cell culture-derived influenza vaccine (aH5N8c); MF59-adjuvanted H5N6 cell culture-derived influenza vaccine (aH5N6c),same_concept_different_wording,same vaccine; registry adds the dosing day
+NCT05893888,condition_extra,carcinoma in situ of the lip or oral cavity,Oral Squamous Cell Carcinoma,granularity,related oral cancer stage
+NCT06129175,intervention_extra,umbilical cord mesenchymal stem cells,Neuroncell-EX,same_concept_different_wording,the product is a mesenchymal stem cell therapy
+NCT07144280,condition_extra,programmed cell death ligand 1 positive non-small cell lung cancer,Non-small Cell Carcinoma; Non-Small Cell Lung Cancer Metastatic; Non-Small Cell Lung Carcinoma,same_concept_different_wording,NSCLC with a biomarker qualifier
+NCT07144280,condition_missed,Non-Small Cell Lung Cancer Metastatic,programmed cell death ligand 1 positive non-small cell lung cancer,same_concept_different_wording,NSCLC with a biomarker qualifier
+NCT07144280,condition_missed,Non-Small Cell Lung Carcinoma,programmed cell death ligand 1 positive non-small cell lung cancer,same_concept_different_wording,NSCLC with a biomarker qualifier
+NCT07168434,condition_missed,IBS-D (Diarrhea-predominant),irritable bowel syndrome,granularity,IBS vs IBS with diarrhea
+NCT07311538,condition_extra,endometrial cancer,Advanced Gynecological Malignancies,granularity,specific cancer vs 'gynecological malignancies'
+NCT07311538,condition_missed,Advanced Gynecological Malignancies,ovarian cancer; endometrial cancer; ovarian clear cell carcinoma,granularity,umbrella term vs the specific cancers
+NCT07729826,intervention_extra,fludarabine,C-CAR168,valid_but_not_registered,lymphodepletion chemotherapy named in the text; registry lists only the CAR-T product

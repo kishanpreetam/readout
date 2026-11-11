@@ -1,0 +1,675 @@
+[
+ {
+  "id": "g01",
+  "kind": "count",
+  "question": "How many Phase 3 trials (phase exactly Phase 3, not Phase 2/3) have at least one site in Germany?",
+  "note": "Count distinct trials, not site rows: one trial lists many German sites. Phase must be exactly PHASE3, not PHASE2_PHASE3.",
+  "gold": [
+   [
+    2495
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select count(distinct t.nct_id) from marts.dim_trial t join marts.fct_trial_sites s using (nct_id) where t.phase = 'PHASE3' and s.country ilike 'germany'",
+  "columns": [
+   "count(DISTINCT t.nct_id)"
+  ],
+  "rows": [
+   [
+    2495
+   ]
+  ],
+  "row_count": 1,
+  "model": "claude-opus-5-5",
+  "seconds": 4.0,
+  "cached": false,
+  "wall_seconds": 4.0
+ },
+ {
+  "id": "g02",
+  "kind": "count",
+  "question": "How many trials with the status RECRUITING have at least one site in Japan?",
+  "note": "Trial status (overall_status), not site_status. About 27% of Japanese sites have no coordinates, so a join through dim_site_location undercounts.",
+  "gold": [
+   [
+    890
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select count(distinct t.nct_id) from marts.dim_trial t join marts.fct_trial_sites s using (nct_id) where t.overall_status = 'RECRUITING' and s.country ilike 'japan'",
+  "columns": [
+   "count(DISTINCT t.nct_id)"
+  ],
+  "rows": [
+   [
+    890
+   ]
+  ],
+  "row_count": 1,
+  "model": "claude-opus-5-5",
+  "seconds": 3.1,
+  "cached": false,
+  "wall_seconds": 3.1
+ },
+ {
+  "id": "g03",
+  "kind": "count",
+  "question": "How many Phase 3 trials (phase exactly Phase 3, not Phase 2/3) with the status RECRUITING have at least one site in San Diego?",
+  "note": "Three filters at once: exact phase, trial status and city. City is an exact match on 'San Diego'. Distinct trials, not site rows.",
+  "gold": [
+   [
+    164
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select count(distinct t.nct_id) from marts.dim_trial t join marts.fct_trial_sites s using (nct_id) where t.phase = 'PHASE3' and t.overall_status = 'RECRUITING' and s.city ilike 'San Diego'",
+  "columns": [
+   "count(DISTINCT t.nct_id)"
+  ],
+  "rows": [
+   [
+    164
+   ]
+  ],
+  "row_count": 1,
+  "model": "claude-opus-5-5",
+  "seconds": 3.7,
+  "cached": false,
+  "wall_seconds": 3.7
+ },
+ {
+  "id": "g04",
+  "kind": "count",
+  "question": "How many active trials (status RECRUITING, NOT_YET_RECRUITING, ACTIVE_NOT_RECRUITING or ENROLLING_BY_INVITATION) have at least one site in Massachusetts?",
+  "note": "Active means is_active, which covers four statuses. The state is spelled out in the data, not 'MA'. Distinct trials.",
+  "gold": [
+   [
+    2389
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select count(distinct t.nct_id) from marts.dim_trial t join marts.fct_trial_sites s using (nct_id) where t.is_active and s.state ilike 'massachusetts'",
+  "columns": [
+   "count(DISTINCT t.nct_id)"
+  ],
+  "rows": [
+   [
+    2389
+   ]
+  ],
+  "row_count": 1,
+  "model": "claude-opus-5-5",
+  "seconds": 3.4,
+  "cached": false,
+  "wall_seconds": 3.4
+ },
+ {
+  "id": "g05",
+  "kind": "count",
+  "question": "How many active Phase 3 or Phase 2/3 trials with primary completion on or after 2026-11-03 and before 2027-11-03 have at least one site in France?",
+  "note": "The window starts on the as-of date and ends before the same day one year later. Phase 3 and Phase 2/3 together, active only, distinct trials.",
+  "gold": [
+   [
+    259
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select count(distinct t.nct_id) from marts.dim_trial t join marts.fct_trial_sites s using (nct_id) where t.is_active and t.phase in ('PHASE3','PHASE2_PHASE3') and t.primary_completion_date >= date '2026-11-03' and t.primary_completion_date < date '2027-11-03' and s.country ilike 'france'",
+  "columns": [
+   "count(DISTINCT t.nct_id)"
+  ],
+  "rows": [
+   [
+    259
+   ]
+  ],
+  "row_count": 1,
+  "model": "claude-opus-5-5",
+  "seconds": 4.0,
+  "cached": false,
+  "wall_seconds": 4.0
+ },
+ {
+  "id": "g06",
+  "kind": "count",
+  "question": "How many of the upcoming readouts (active Phase 2, 2/3 or 3 trials with primary completion in the 12 months after 2026-11-03) have at least one site in Spain? Count each trial once.",
+  "note": "mart_upcoming_readouts has one row per trial and organization, so counting its rows, or joining it to the site table, inflates the count. Count distinct trials.",
+  "gold": [
+   [
+    509
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select count(distinct r.nct_id) from marts.mart_upcoming_readouts r where exists (select 1 from marts.fct_trial_sites s where s.nct_id = r.nct_id and s.country ilike 'spain')",
+  "columns": [
+   "count(DISTINCT r.nct_id)"
+  ],
+  "rows": [
+   [
+    509
+   ]
+  ],
+  "row_count": 1,
+  "model": "claude-opus-5-5",
+  "seconds": 3.0,
+  "cached": false,
+  "wall_seconds": 3.0
+ },
+ {
+  "id": "g07",
+  "kind": "count",
+  "question": "How many Phase 3 trials (phase exactly Phase 3, not Phase 2/3) led by Eli Lilly and Company have at least one site in Australia?",
+  "note": "Lead sponsor is the resolved organization (lead_org_name). Exact phase, distinct trials.",
+  "gold": [
+   [
+    67
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select count(distinct t.nct_id) from marts.bridge_trial_organization b join marts.dim_trial t using (nct_id) join marts.dim_organization o using (org_id) where o.org_name ilike 'eli lilly and company' and b.sponsor_role = 'lead' and t.phase = 'PHASE3' and exists (select 1 from marts.fct_trial_sites s where s.nct_id = t.nct_id and s.country ilike 'australia')",
+  "columns": [
+   "count(DISTINCT t.nct_id)"
+  ],
+  "rows": [
+   [
+    67
+   ]
+  ],
+  "row_count": 1,
+  "model": "claude-opus-5-5",
+  "seconds": 4.2,
+  "cached": false,
+  "wall_seconds": 4.2
+ },
+ {
+  "id": "g08",
+  "kind": "count",
+  "question": "How many trials with a site in Florida list a condition containing the text 'diabetes' (case-insensitive)?",
+  "note": "conditions is one '; ' separated text field, matched with ILIKE on the stated text. State is the full name. Distinct trials.",
+  "gold": [
+   [
+    283
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select count(distinct t.nct_id) from marts.dim_trial t join marts.fct_trial_sites s using (nct_id) where s.state ilike 'florida' and s.country ilike 'united states' and t.conditions ilike '%diabetes%'",
+  "columns": [
+   "count(DISTINCT t.nct_id)"
+  ],
+  "rows": [
+   [
+    283
+   ]
+  ],
+  "row_count": 1,
+  "model": "claude-opus-5-5",
+  "seconds": 3.6,
+  "cached": false,
+  "wall_seconds": 3.6
+ },
+ {
+  "id": "g09",
+  "kind": "count",
+  "question": "How many trials with a site in Houston list a condition containing the text 'breast cancer' (case-insensitive)?",
+  "note": "Substring match on conditions only, not on titles. Exact city match. One trial can list many Houston sites, so count distinct trials.",
+  "gold": [
+   [
+    299
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select count(distinct s.nct_id) from marts.fct_trial_sites s join marts.dim_trial t using (nct_id) where s.city ilike 'houston' and t.conditions ilike '%breast cancer%'",
+  "columns": [
+   "count(DISTINCT s.nct_id)"
+  ],
+  "rows": [
+   [
+    299
+   ]
+  ],
+  "row_count": 1,
+  "model": "claude-opus-5-5",
+  "seconds": 3.5,
+  "cached": false,
+  "wall_seconds": 3.5
+ },
+ {
+  "id": "g10",
+  "kind": "text",
+  "question": "Which US state has the most Phase 3 trials (phase exactly Phase 3, not Phase 2/3) with a site there? Count each trial once per state.",
+  "note": "Counting site rows instead of distinct trials changes the winner. Restrict to the United States, because state also holds provinces and regions elsewhere.",
+  "gold": [
+   [
+    "California",
+    3690
+   ],
+   [
+    "Texas",
+    3464
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select s.state, count(distinct s.nct_id) as n_trials from marts.fct_trial_sites s join marts.dim_trial t using (nct_id) where t.phase = 'PHASE3' and s.country ilike 'united states' and s.state is not null group by s.state order by n_trials desc limit 1",
+  "columns": [
+   "state",
+   "n_trials"
+  ],
+  "rows": [
+   [
+    "California",
+    3690
+   ]
+  ],
+  "row_count": 1,
+  "model": "claude-opus-5-5",
+  "seconds": 3.5,
+  "cached": false,
+  "wall_seconds": 3.5
+ },
+ {
+  "id": "g11",
+  "kind": "text",
+  "question": "Outside the United States, which country has the most Phase 3 trials (phase exactly Phase 3, not Phase 2/3) with a site there? Count each trial once per country.",
+  "note": "Exclude the United States and count distinct trials per country, not site rows. Hong Kong is a separate country value, not part of China.",
+  "gold": [
+   [
+    "China",
+    2778
+   ],
+   [
+    "Spain",
+    2630
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select s.country, count(distinct s.nct_id) as n_trials from marts.fct_trial_sites s join marts.dim_trial t using (nct_id) where t.phase = 'PHASE3' and s.country is not null and s.country not ilike 'united states' group by s.country order by n_trials desc limit 1",
+  "columns": [
+   "country",
+   "n_trials"
+  ],
+  "rows": [
+   [
+    "China",
+    2778
+   ]
+  ],
+  "row_count": 1,
+  "model": "claude-opus-5-5",
+  "seconds": 3.8,
+  "cached": false,
+  "wall_seconds": 3.8
+ },
+ {
+  "id": "g12",
+  "kind": "text",
+  "question": "Which organization leads the most trials that have at least one site in China?",
+  "note": "Rank resolved lead organizations (lead_org_name) over trials with a China site, one count per trial. Hong Kong is a separate country value.",
+  "gold": [
+   [
+    "Jiangsu HengRui Medicine Co., Ltd.",
+    386
+   ],
+   [
+    "Chia Tai Tianqing Pharmaceutical Group Co., Ltd.",
+    264
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select o.org_id, o.org_name, count(distinct b.nct_id) as n_trials from marts.bridge_trial_organization b join marts.dim_organization o using (org_id) where b.sponsor_role = 'lead' and b.nct_id in (select nct_id from marts.fct_trial_sites where country ilike 'china') group by o.org_id, o.org_name order by n_trials desc limit 1",
+  "columns": [
+   "org_id",
+   "org_name",
+   "n_trials"
+  ],
+  "rows": [
+   [
+    5011,
+    "Jiangsu HengRui Medicine Co., Ltd.",
+    386
+   ]
+  ],
+  "row_count": 1,
+  "model": "claude-opus-5-5",
+  "seconds": 3.9,
+  "cached": false,
+  "wall_seconds": 3.9
+ },
+ {
+  "id": "g13",
+  "kind": "text",
+  "question": "Which Canadian province has the most trials with at least one site there? Count each trial once per province.",
+  "note": "Provinces live in the state column. Some Canadian sites have no state, so that group must not be the answer. Distinct trials, not site rows.",
+  "gold": [
+   [
+    "Ontario",
+    3919
+   ],
+   [
+    "Quebec",
+    2778
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select state, count(distinct nct_id) as n_trials from marts.fct_trial_sites where country ilike 'canada' and state is not null group by state order by n_trials desc limit 1",
+  "columns": [
+   "state",
+   "n_trials"
+  ],
+  "rows": [
+   [
+    "Ontario",
+    3919
+   ]
+  ],
+  "row_count": 1,
+  "model": "claude-opus-5-5",
+  "seconds": 3.1,
+  "cached": false,
+  "wall_seconds": 3.1
+ },
+ {
+  "id": "g14",
+  "kind": "list",
+  "question": "Excluding the United States, which three countries have the most trials with the status RECRUITING and a site there? Count each trial once per country and list the country names.",
+  "note": "Top three by distinct trials after excluding the United States. Trial status, not site_status. The answer must be exactly three rows.",
+  "gold": [
+   [
+    "China"
+   ],
+   [
+    "Spain"
+   ],
+   [
+    "Australia"
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select s.country, count(distinct s.nct_id) as n_trials from marts.fct_trial_sites s join marts.dim_trial t using (nct_id) where t.overall_status = 'RECRUITING' and s.country is not null and s.country not ilike 'united states' group by s.country order by n_trials desc limit 3",
+  "columns": [
+   "country",
+   "n_trials"
+  ],
+  "rows": [
+   [
+    "China",
+    2978
+   ],
+   [
+    "Spain",
+    1454
+   ],
+   [
+    "Australia",
+    1295
+   ]
+  ],
+  "row_count": 3,
+  "model": "claude-opus-5-5",
+  "seconds": 4.3,
+  "cached": false,
+  "wall_seconds": 4.3
+ },
+ {
+  "id": "g15",
+  "kind": "list",
+  "question": "Which Texas cities have more than 1,500 trials with at least one site in the city? List their city names.",
+  "note": "Group by city inside the state, count distinct trials per city and keep cities above the threshold. A city can have several map points, so per-point counts need adding up.",
+  "gold": [
+   [
+    "San Antonio"
+   ],
+   [
+    "Dallas"
+   ],
+   [
+    "Austin"
+   ],
+   [
+    "Houston"
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select s.geo_key, any_value(l.city) as city, any_value(l.country) as country, count(distinct s.nct_id) as n_trials from marts.fct_trial_sites s join marts.dim_site_location l using (geo_key) where s.state ilike 'texas' and s.country ilike 'united states' and s.geo_key is not null group by s.geo_key having count(distinct s.nct_id) > 1500 order by n_trials desc",
+  "columns": [
+   "geo_key",
+   "city",
+   "country",
+   "n_trials"
+  ],
+  "rows": [
+   [
+    "29.7633,-95.3633",
+    "Houston",
+    "United States",
+    6194
+   ],
+   [
+    "32.7831,-96.8067",
+    "Dallas",
+    "United States",
+    3998
+   ],
+   [
+    "29.4241,-98.4936",
+    "San Antonio",
+    "United States",
+    3601
+   ],
+   [
+    "30.2672,-97.7431",
+    "Austin",
+    "United States",
+    2433
+   ]
+  ],
+  "row_count": 4,
+  "model": "claude-opus-5-5",
+  "seconds": 4.2,
+  "cached": false,
+  "wall_seconds": 4.2
+ },
+ {
+  "id": "g16",
+  "kind": "list",
+  "question": "List the NCT IDs of the active Phase 3 or Phase 2/3 trials led by AstraZeneca with primary completion on or after 2026-11-03 and before 2027-11-03 that have at least one site in Boston.",
+  "note": "Combines lead organization, a phase set, the 12-month window and a city filter. One NCT ID per trial, with no duplicates from the site join.",
+  "gold": [
+   [
+    "NCT06307652"
+   ],
+   [
+    "NCT04862663"
+   ],
+   [
+    "NCT05057494"
+   ],
+   [
+    "NCT06103864"
+   ],
+   [
+    "NCT05774951"
+   ],
+   [
+    "NCT06473779"
+   ],
+   [
+    "NCT06307665"
+   ],
+   [
+    "NCT07007793"
+   ],
+   [
+    "NCT05629585"
+   ],
+   [
+    "NCT04784715"
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select distinct t.nct_id from marts.dim_trial t join marts.bridge_trial_organization b using (nct_id) join marts.dim_organization o using (org_id) where o.org_name ilike '%astrazeneca%' and b.sponsor_role = 'lead' and t.is_active and t.phase in ('PHASE3','PHASE2_PHASE3') and t.primary_completion_date >= date '2026-11-03' and t.primary_completion_date < date '2027-11-03' and exists (select 1 from marts.fct_trial_sites s where s.nct_id = t.nct_id and s.city ilike 'boston') order by t.nct_id",
+  "columns": [
+   "nct_id"
+  ],
+  "rows": [
+   [
+    "NCT04784715"
+   ],
+   [
+    "NCT04862663"
+   ],
+   [
+    "NCT05057494"
+   ],
+   [
+    "NCT05629585"
+   ],
+   [
+    "NCT05774951"
+   ],
+   [
+    "NCT06103864"
+   ],
+   [
+    "NCT06307652"
+   ],
+   [
+    "NCT06307665"
+   ],
+   [
+    "NCT06473779"
+   ],
+   [
+    "NCT07007793"
+   ]
+  ],
+  "row_count": 10,
+  "model": "claude-opus-5-5",
+  "seconds": 4.4,
+  "cached": false,
+  "wall_seconds": 4.4
+ },
+ {
+  "id": "g17",
+  "kind": "number",
+  "question": "What percentage of Phase 3 trials (phase exactly Phase 3, not Phase 2/3) with a site in Italy have the status RECRUITING? Round to one decimal place.",
+  "note": "The percentage is over distinct trials with an Italian site, not over site rows. Round to one decimal place.",
+  "gold": [
+   [
+    21.8
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select round(100.0 * count(*) filter (where t.overall_status = 'RECRUITING') / count(*), 1) as pct_recruiting from marts.dim_trial t where t.phase = 'PHASE3' and t.nct_id in (select nct_id from marts.fct_trial_sites where country ilike 'italy')",
+  "columns": [
+   "pct_recruiting"
+  ],
+  "rows": [
+   [
+    21.8
+   ]
+  ],
+  "row_count": 1,
+  "model": "claude-opus-5-5",
+  "seconds": 3.4,
+  "cached": false,
+  "wall_seconds": 3.4
+ },
+ {
+  "id": "g18",
+  "kind": "number",
+  "question": "What is the median enrollment count of Phase 3 trials (phase exactly Phase 3, not Phase 2/3) that have a site in Japan? Count each trial once.",
+  "note": "Take the median over distinct trials. Joining to the site table first weights each trial by its number of Japanese sites and gives a much larger number.",
+  "gold": [
+   [
+    450.5
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select median(t.enrollment_count) as median_enrollment from marts.dim_trial t where t.phase = 'PHASE3' and t.nct_id in (select nct_id from marts.fct_trial_sites where country ilike 'japan')",
+  "columns": [
+   "median_enrollment"
+  ],
+  "rows": [
+   [
+    450.5
+   ]
+  ],
+  "row_count": 1,
+  "model": "claude-opus-5-5",
+  "seconds": 3.7,
+  "cached": false,
+  "wall_seconds": 3.7
+ },
+ {
+  "id": "g19",
+  "kind": "date",
+  "question": "What is the earliest primary completion date on or after 2026-11-03 among active Phase 3 trials (phase exactly Phase 3, not Phase 2/3) with a site in Boston?",
+  "note": "The lower bound matters: many active trials are overdue and have primary completion dates before the as-of date.",
+  "gold": [
+   [
+    "2026-11-13"
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select min(t.primary_completion_date) as earliest_primary_completion_date from marts.dim_trial t where t.phase = 'PHASE3' and t.is_active and t.primary_completion_date >= date '2026-11-03' and exists (select 1 from marts.fct_trial_sites s where s.nct_id = t.nct_id and s.city ilike 'boston')",
+  "columns": [
+   "earliest_primary_completion_date"
+  ],
+  "rows": [
+   [
+    "2026-11-13"
+   ]
+  ],
+  "row_count": 1,
+  "model": "claude-opus-5-5",
+  "seconds": 4.1,
+  "cached": false,
+  "wall_seconds": 4.1
+ },
+ {
+  "id": "g20",
+  "kind": "date",
+  "question": "What is the latest primary completion date among active Phase 3 trials (phase exactly Phase 3, not Phase 2/3) led by Pfizer that have a site in the United Kingdom?",
+  "note": "Latest date over active Pfizer Phase 3 trials with a United Kingdom site. No lower bound. Lead sponsor is the resolved organization.",
+  "gold": [
+   [
+    "2030-10-18"
+   ]
+  ],
+  "status": "ok",
+  "correct": true,
+  "sql": "select max(t.primary_completion_date) as latest_primary_completion_date from marts.dim_trial t join marts.bridge_trial_organization b using (nct_id) join marts.dim_organization o using (org_id) where o.org_name ilike 'pfizer' and b.sponsor_role = 'lead' and t.phase = 'PHASE3' and t.is_active and exists (select 1 from marts.fct_trial_sites s where s.nct_id = t.nct_id and s.country ilike 'United Kingdom')",
+  "columns": [
+   "latest_primary_completion_date"
+  ],
+  "rows": [
+   [
+    "2030-10-18"
+   ]
+  ],
+  "row_count": 1,
+  "model": "claude-opus-5-5",
+  "seconds": 3.8,
+  "cached": false,
+  "wall_seconds": 3.8
+ }
+]

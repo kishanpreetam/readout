@@ -1,0 +1,219 @@
+version: 2
+
+models:
+  - name: dim_company
+    description: One row per company in the SEC universe (Nasdaq or NYSE listed, SIC 2834 or 2836, US GAAP R&D reported for 2024).
+    columns:
+      - name: cik
+        description: SEC Central Index Key.
+        data_tests: [unique, not_null]
+      - name: company_name
+        description: Company name as registered with the SEC (upper case, as SEC stores it).
+        data_tests: [not_null]
+      - name: ticker
+        description: First listed ticker.
+      - name: universe_stratum
+        description: How the company entered the universe (top_rd, random_sample or all_eligible).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [top_rd, random_sample, all_eligible]
+
+  - name: dim_trial
+    description: One row per study with phase, status, key dates, lead sponsor and its linked company.
+    columns:
+      - name: nct_id
+        data_tests: [unique, not_null]
+      - name: phase
+        description: EARLY_PHASE1, PHASE1, PHASE1_PHASE2, PHASE2, PHASE2_PHASE3, PHASE3, PHASE4, NA (device and other studies without phases) or UNKNOWN.
+      - name: is_active
+        description: True when the status is recruiting, not yet recruiting, active not recruiting or enrolling by invitation.
+      - name: primary_completion_date
+        description: Actual or anticipated primary completion date (see primary_completion_date_type).
+        data_tests:
+          - expression_is_true:
+              arguments:
+                expression: "primary_completion_date >= start_date"
+                where_clause: "start_date is not null and primary_completion_date is not null"
+              config:
+                severity: warn
+      - name: lead_org_id
+        description: The resolved organization of the lead sponsor.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_organization')
+                field: org_id
+      - name: lead_cik
+        description: CIK of the SEC company the lead organization links to; null outside the SEC universe or without SEC data.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_company')
+                field: cik
+
+  - name: dim_organization
+    description: One row per resolved organization (corporate group) with its trial counts and, when linked, its SEC company.
+    columns:
+      - name: org_id
+        data_tests: [unique, not_null]
+      - name: org_name
+        description: The group's name, taken from its ultimate stated parent or else its most frequent sponsor name.
+        data_tests: [not_null]
+      - name: cik
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_company')
+                field: cik
+
+  - name: bridge_trial_organization
+    description: Studies and the organizations named on them (lead sponsor or industry collaborator), one row per study and organization.
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [nct_id, org_id]
+    columns:
+      - name: nct_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_trial')
+                field: nct_id
+      - name: org_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_organization')
+                field: org_id
+      - name: sponsor_role
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [lead, collaborator]
+
+  - name: dim_date
+    description: Calendar date spine covering every study date.
+    columns:
+      - name: date_key
+        data_tests: [unique, not_null]
+      - name: date_day
+        data_tests: [unique, not_null]
+
+  - name: fct_trial_events
+    description: One row per study milestone (start, primary_completion, completion), actual or anticipated.
+    columns:
+      - name: event_id
+        data_tests: [unique, not_null]
+      - name: nct_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_trial')
+                field: nct_id
+      - name: date_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: event_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [start, primary_completion, completion]
+      - name: date_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [ACTUAL, ESTIMATED, UNKNOWN]
+
+  - name: bridge_trial_company
+    description: Studies linked to SEC universe companies through their organizations, one row per study and company.
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [nct_id, cik]
+    columns:
+      - name: cik
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_company')
+                field: cik
+      - name: nct_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_trial')
+                field: nct_id
+
+  - name: fct_financials
+    description: One row per company and fiscal quarter end. Balances are at the quarter end; flows cover the three months, reported or derived from year-to-date values.
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [cik, period_end]
+    columns:
+      - name: cik
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_company')
+                field: cik
+      - name: cash_burn
+        description: Cash used by operations in the quarter (minus operating cash flow); the net loss stands in when no cash flow figure exists.
+      - name: burn_basis
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [operating_cash_flow, net_income]
+
+  - name: mart_cash_runway
+    description: Runway at each company's latest reported quarter. runway_months = 3 x (cash, equivalents and short-term investments) / average quarterly burn over the trailing 12 months.
+    columns:
+      - name: cik
+        data_tests: [unique, not_null]
+      - name: runway_months
+        data_tests:
+          - expression_is_true:
+              arguments:
+                expression: "runway_months >= 0"
+                where_clause: "runway_months is not null"
+      - name: runway_band
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [insufficient_data, not_burning, under_12_months, 12_to_24_months, over_24_months]
+
+  - name: mart_upcoming_readouts
+    description: Active Phase 2, 2/3 and 3 studies with primary completion in the 12 months after the snapshot date, one row per study and organization.
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [nct_id, org_id]
+    columns:
+      - name: days_until_primary_completion
+        data_tests:
+          - expression_is_true:
+              arguments:
+                expression: "days_until_primary_completion between 0 and 366"
+
+  - name: mart_org_pipeline
+    description: Per organization counts of studies by phase and status, and the number of readouts in the next 12 months.
+    columns:
+      - name: org_id
+        data_tests: [unique, not_null]
+
+  - name: mart_readout_runway_risk
+    description: SEC-linked companies with a Phase 3 or Phase 2/3 readout in the next 12 months, with runway; funding_risk flags runway under 12 months.
+    columns:
+      - name: org_id
+        data_tests: [unique, not_null]

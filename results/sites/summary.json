@@ -1,0 +1,63 @@
+{
+  "fetched_at": "2026-11-11T20:17:09+00:00",
+  "as_of": "2026-11-03",
+  "trials_total": 49798,
+  "trials_with_sites": 46871,
+  "trials_with_geo": 46587,
+  "site_rows": 942520,
+  "site_rows_with_geo": 915378,
+  "points": 11285,
+  "countries": 156,
+  "top_countries": [
+    {
+      "country": "United States",
+      "trials": 23198,
+      "sites": 327397
+    },
+    {
+      "country": "China",
+      "trials": 10965,
+      "sites": 78407
+    },
+    {
+      "country": "Spain",
+      "trials": 6749,
+      "sites": 41547
+    },
+    {
+      "country": "Germany",
+      "trials": 6137,
+      "sites": 35641
+    },
+    {
+      "country": "United Kingdom",
+      "trials": 6076,
+      "sites": 26779
+    },
+    {
+      "country": "France",
+      "trials": 5649,
+      "sites": 31974
+    },
+    {
+      "country": "Canada",
+      "trials": 5566,
+      "sites": 23889
+    },
+    {
+      "country": "Australia",
+      "trials": 5329,
+      "sites": 21770
+    },
+    {
+      "country": "Italy",
+      "trials": 5168,
+      "sites": 28748
+    },
+    {
+      "country": "South Korea",
+      "trials": 4590,
+      "sites": 21893
+    }
+  ]
+}

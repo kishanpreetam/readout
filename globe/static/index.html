@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://tiles.openfreemap.org; font-src 'self'; connect-src 'self' https://tiles.openfreemap.org; worker-src 'self' blob:; child-src blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Where Readout's industry clinical trials run, on a 3D globe with filters, a time slider and plain-English questions.">
+  <title>Readout Globe</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/maplibre-gl/maplibre-gl.css">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="vendor/maplibre-gl/maplibre-gl.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#filters">Skip to filters</a>
+
+  <div id="map" class="map"></div>
+  <p id="map-fallback" class="map-message" hidden></p>
+
+  <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+
+  <section id="ask" class="panel ask" aria-label="Ask a question">
+    <form id="ask-form" class="ask-form" role="search" novalidate>
+      <label for="ask-input" class="sr-only">Ask a question about the trials in plain English</label>
+      <svg class="ask-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.75" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12.8 12.8 17 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <input id="ask-input" name="question" type="text" maxlength="300" autocomplete="off" spellcheck="false"
+             placeholder="Try: phase 3 trials in Japan finishing next year">
+      <button id="ask-button" class="btn btn-primary" type="submit">Ask</button>
+    </form>
+    <div id="ask-progress" class="ask-progress" hidden>
+      <div class="progress-track" aria-hidden="true"><div class="progress-bar"></div></div>
+      <p id="ask-progress-text" class="ask-progress-text" role="status">Working on your question</p>
+    </div>
+    <p id="ask-error" class="ask-error" role="alert" hidden></p>
+    <div id="ask-result" class="ask-result" hidden>
+      <div class="ask-head">
+        <p class="ask-count"><strong id="ask-count"></strong> <span id="ask-meta" class="muted"></span></p>
+        <button id="ask-clear" class="btn btn-quiet" type="button">Clear</button>
+      </div>
+      <p id="ask-note" class="ask-note"></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Answer rows">
+        <table id="ask-table" class="grid"></table>
+      </div>
+      <button id="ask-more" class="btn-link" type="button" hidden></button>
+      <details id="ask-sql" class="sql">
+        <summary>Generated SQL</summary>
+        <div class="sql-body">
+          <pre><code id="ask-sql-code"></code></pre>
+          <button id="ask-copy" class="btn btn-quiet btn-small" type="button">Copy SQL</button>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <div id="sheet" class="sheet">
+    <button id="sheet-toggle" class="sheet-toggle" type="button" aria-expanded="false" aria-controls="filters">
+      <span class="grabber" aria-hidden="true"></span>
+      <span id="sheet-toggle-text">Show filters</span>
+    </button>
+
+    <div id="filters" class="panel filters" tabindex="-1">
+      <header class="brand">
+        <div class="brand-row">
+          <h1>Readout Globe</h1>
+          <span id="sample-badge" class="badge badge-sample" hidden>Sample data</span>
+        </div>
+        <p id="brand-sub" class="brand-sub">Where industry clinical trials run</p>
+      </header>
+
+      <section id="summary" class="summary" aria-labelledby="summary-title">
+        <h2 id="summary-title" class="sr-only">Matching now</h2>
+        <dl class="stats">
+          <div class="stat"><dt>Trials</dt><dd id="sum-trials">0</dd></div>
+          <div class="stat"><dt>Sites</dt><dd id="sum-sites">0</dd></div>
+          <div class="stat"><dt>Locations</dt><dd id="sum-points">0</dd></div>
+        </dl>
+        <p id="summary-note" class="summary-note">Loading trial sites</p>
+        <ul class="legend" aria-label="Legend">
+          <li><span class="dot dot-site" aria-hidden="true"></span>Trial sites, sized by trials</li>
+          <li id="legend-due" hidden><span class="dot dot-due" aria-hidden="true"></span>Readouts due in 12 months</li>
+          <li id="legend-answer" hidden><span class="dot dot-answer" aria-hidden="true"></span>In the answer</li>
+        </ul>
+        <p id="points-error" class="inline-error" role="alert" hidden></p>
+      </section>
+
+      <section class="group" aria-labelledby="phase-title">
+        <div class="group-head">
+          <h2 id="phase-title">Phase</h2>
+        </div>
+        <div id="phase-chips" class="chips" role="group" aria-labelledby="phase-title"></div>
+      </section>
+
+      <section class="group" aria-labelledby="status-title">
+        <div class="group-head">
+          <h2 id="status-title">Status</h2>
+          <button id="status-active" class="btn-link btn-small" type="button">Active only</button>
+        </div>
+        <div id="status-chips" class="chips" role="group" aria-labelledby="status-title"></div>
+      </section>
+
+      <section class="group">
+        <div class="group-head">
+          <h2><label for="sponsor-input">Lead sponsor</label></h2>
+        </div>
+        <div id="sponsor-chosen" class="chosen" hidden>
+          <span id="sponsor-chosen-name" class="chosen-name"></span>
+          <button id="sponsor-remove" class="chip-x" type="button" aria-label="Remove sponsor filter">
+            <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <div class="combo">
+          <input id="sponsor-input" class="field" type="text" role="combobox" aria-autocomplete="list"
+                 aria-expanded="false" aria-controls="sponsor-list" aria-describedby="sponsor-hint"
+                 autocomplete="off" spellcheck="false" maxlength="60" placeholder="Search sponsors">
+          <ul id="sponsor-list" class="listbox" role="listbox" aria-label="Matching sponsors" hidden></ul>
+        </div>
+        <p id="sponsor-hint" class="hint">Type 2 or more letters</p>
+      </section>
+
+      <section class="group">
+        <div class="group-head">
+          <h2><label for="q-input">Text search</label></h2>
+        </div>
+        <input id="q-input" class="field" type="search" maxlength="80" autocomplete="off" spellcheck="false"
+               placeholder="Title, condition or drug" aria-describedby="q-hint">
+        <p id="q-hint" class="hint">Matches titles, conditions and interventions</p>
+      </section>
+
+      <section class="group group-row">
+        <div class="switch-label">
+          <span class="dot dot-due" aria-hidden="true"></span>
+          <span id="due-label">Readouts due in the next 12 months</span>
+        </div>
+        <button id="due-switch" class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="due-label">
+          <span class="switch-knob" aria-hidden="true"></span>
+        </button>
+      </section>
+
+      <section class="group" aria-labelledby="top-title">
+        <div class="group-head">
+          <h2 id="top-title">Busiest locations</h2>
+        </div>
+        <ol id="top-list" class="top-list"></ol>
+      </section>
+
+      <div class="filters-foot">
+        <button id="reset" class="btn btn-quiet" type="button" hidden>Reset filters</button>
+      </div>
+    </div>
+
+    <section id="timebar" class="panel timebar" aria-label="Time">
+      <button id="play" class="icon-btn" type="button" aria-label="Play through the months">
+        <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 3.2v9.6c0 .5.5.8.9.5l7.2-4.8a.6.6 0 0 0 0-1L5.9 2.7c-.4-.3-.9 0-.9.5Z" fill="currentColor"/></svg>
+        <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="4" y="3" width="2.6" height="10" rx="0.8" fill="currentColor"/><rect x="9.4" y="3" width="2.6" height="10" rx="0.8" fill="currentColor"/></svg>
+      </button>
+      <div class="time-main">
+        <div class="time-head">
+          <p id="time-label" class="time-label">All time</p>
+          <p id="time-range" class="time-range muted"></p>
+        </div>
+        <div class="range-wrap">
+          <input id="month" class="range" type="range" min="0" max="0" step="1" value="0" aria-label="Month" aria-describedby="time-label">
+          <div id="time-ticks" class="ticks" aria-hidden="true"></div>
+        </div>
+      </div>
+      <button id="alltime" class="pill" type="button" aria-pressed="true">All time</button>
+    </section>
+
+    <footer id="footer" class="footer">
+      <p id="footer-sample" class="footer-sample" hidden>Sample data with made-up sponsors and NCT IDs.</p>
+      <p>
+        <span id="footer-basemap">Map <a href="https://openfreemap.org" target="_blank" rel="noopener noreferrer">OpenFreeMap</a>
+          <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener noreferrer">&copy; OpenMapTiles</a>
+          Data from <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a></span>
+        <span id="footer-fallback" hidden>Map <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">Natural Earth</a> (offline basemap)</span>
+        <span class="sep" aria-hidden="true">·</span>
+        <span>Trials from <a href="https://clinicaltrials.gov/" target="_blank" rel="noopener noreferrer">ClinicalTrials.gov</a><span id="footer-asof"></span></span>
+        <span class="sep" aria-hidden="true">·</span>
+        <span id="footer-sites">Site locations</span>
+      </p>
+    </footer>
+  </div>
+
+  <aside id="card" class="panel card" aria-labelledby="card-title" hidden>
+    <header class="card-head">
+      <div class="card-titles">
+        <p id="card-kicker" class="card-kicker"></p>
+        <h2 id="card-title" tabindex="-1"></h2>
+        <p id="card-sub" class="card-sub"></p>
+      </div>
+      <button id="card-close" class="icon-btn icon-btn-quiet" type="button" aria-label="Close details">
+        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </header>
+    <p id="card-count" class="card-count"></p>
+    <div id="card-body" class="card-body" aria-live="polite" aria-busy="false"></div>
+  </aside>
+
+  <p id="live" class="sr-only" aria-live="polite"></p>
+</body>
+</html>

@@ -1,0 +1,88 @@
+version: 2
+
+models:
+  - name: fct_trial_sites
+    description: One row per site listed on a study, only for studies in dim_trial. Coordinates are city level, so a geo_key is effectively a city point.
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [nct_id, site_order]
+      - expression_is_true:
+          arguments:
+            expression: "(lat is null) = (lon is null) and (geo_key is null) = (lat is null)"
+    columns:
+      - name: nct_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_trial')
+                field: nct_id
+      - name: site_order
+        description: Position of the site in the registry record, starting at 1.
+        data_tests:
+          - not_null
+          - expression_is_true:
+              arguments:
+                expression: "site_order >= 1"
+      - name: site_status
+        description: Registry recruitment status of the site; may be null.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [ACTIVE_NOT_RECRUITING, COMPLETED, ENROLLING_BY_INVITATION, NOT_YET_RECRUITING, RECRUITING,
+                         SUSPENDED, TERMINATED, WITHDRAWN, UNKNOWN, AVAILABLE, NO_LONGER_AVAILABLE,
+                         TEMPORARILY_NOT_AVAILABLE, APPROVED_FOR_MARKETING, WITHHELD]
+      - name: lat
+        description: Latitude; null when the registry has no usable coordinates.
+        data_tests:
+          - expression_is_true:
+              arguments:
+                expression: "lat between -90 and 90"
+                where_clause: "lat is not null"
+      - name: lon
+        description: Longitude; null when the registry has no usable coordinates.
+        data_tests:
+          - expression_is_true:
+              arguments:
+                expression: "lon between -180 and 180"
+                where_clause: "lon is not null"
+      - name: geo_key
+        description: "printf('%.4f,%.4f', lat, lon); null when there are no coordinates."
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_site_location')
+                field: geo_key
+
+  - name: dim_site_location
+    description: One row per globe point (geo_key) with the most common city, state and country there and its site and trial counts.
+    data_tests:
+      - expression_is_true:
+          arguments:
+            expression: "printf('%.4f,%.4f', lat, lon) = geo_key"
+    columns:
+      - name: geo_key
+        data_tests: [unique, not_null]
+      - name: lat
+        data_tests:
+          - not_null
+          - expression_is_true:
+              arguments:
+                expression: "lat between -90 and 90"
+      - name: lon
+        data_tests:
+          - not_null
+          - expression_is_true:
+              arguments:
+                expression: "lon between -180 and 180"
+      - name: n_sites
+        description: Site rows at this point.
+        data_tests: [not_null]
+      - name: n_trials
+        description: Distinct trials with a site at this point.
+        data_tests:
+          - not_null
+          - expression_is_true:
+              arguments:
+                expression: "n_trials >= 1 and n_sites >= n_trials"

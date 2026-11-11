@@ -1,0 +1,421 @@
+{
+ "snapshot": {
+  "as_of_date": "2026-11-03",
+  "source": "ClinicalTrials.gov download date"
+ },
+ "files": 50,
+ "bytes_uncompressed": 159027704,
+ "bytes_stored_gzip": 34022759,
+ "sec_access": {
+  "status": "refused",
+  "stage": "tickers",
+  "http_status": 403,
+  "url": "https://www.sec.gov/files/company_tickers_exchange.json",
+  "requests_made": 1,
+  "note": "SEC refused the request. SEC fetching stopped; the pipeline continues without SEC data.",
+  "user_agent": "Readout biotech research project (github.com/kishanpreetam)",
+  "checked_at": "2026-11-04T04:13:41+00:00"
+ },
+ "listing": [
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&countTotal=true&format=json",
+   "path": "data/raw/ctgov/studies_0001.json.gz",
+   "bytes": 3123876,
+   "bytes_stored_gz": 667868,
+   "sha256": "d017d0e7747fe49c0959d9cdea946981fbdb6a1f34cc1e454a30b3d50013516c",
+   "fetched_at": "2026-11-03T18:51:53+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxnYfKh3fg",
+   "path": "data/raw/ctgov/studies_0002.json.gz",
+   "bytes": 3147867,
+   "bytes_stored_gz": 680403,
+   "sha256": "d4fe8bba65508feb093ad619796bb25970c2849c3c96de54eb1506722402a2f0",
+   "fetched_at": "2026-11-03T18:51:54+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxuY_eg3_EW",
+   "path": "data/raw/ctgov/studies_0003.json.gz",
+   "bytes": 3096730,
+   "bytes_stored_gz": 661294,
+   "sha256": "61b3f8802e6daa211dc3521e93a87800ee1eb51a5f87af92849ae6eec923e432",
+   "fetched_at": "2026-11-03T18:51:55+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxtYfij3_YW",
+   "path": "data/raw/ctgov/studies_0004.json.gz",
+   "bytes": 3297079,
+   "bytes_stored_gz": 706589,
+   "sha256": "dce54e4b9972089c1cbf3e933fb2cd4211a9eacca34cb4828cd4286da4dac438",
+   "fetched_at": "2026-11-03T18:51:56+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxsZvWk2fAW",
+   "path": "data/raw/ctgov/studies_0005.json.gz",
+   "bytes": 3139984,
+   "bytes_stored_gz": 674318,
+   "sha256": "77fce02f9777cfc7e1364bdb61c6d3fb889b172c0097cfd262fcc961b9776f9e",
+   "fetched_at": "2026-11-03T18:51:57+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxrZPah3fIW",
+   "path": "data/raw/ctgov/studies_0006.json.gz",
+   "bytes": 3117892,
+   "bytes_stored_gz": 669731,
+   "sha256": "7418af4359bb025ef106fa82a166f26c5798b4a230d8f038d5d495bbb82d8b33",
+   "fetched_at": "2026-11-03T18:51:58+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxqZfKm3_UW",
+   "path": "data/raw/ctgov/studies_0007.json.gz",
+   "bytes": 3274997,
+   "bytes_stored_gz": 696110,
+   "sha256": "1cedd7fce95c3980eaaea3de2be3a097e989c13f05d9aa1b4efb4b79ca9e7318",
+   "fetched_at": "2026-11-03T18:51:58+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxqbfil2PcW",
+   "path": "data/raw/ctgov/studies_0008.json.gz",
+   "bytes": 3087563,
+   "bytes_stored_gz": 663638,
+   "sha256": "9b41ea8550cbe00710c0139998a9a58fc465d32ac0a5adb8a29be079f6053d0c",
+   "fetched_at": "2026-11-03T18:51:59+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxpY_ig3fAW",
+   "path": "data/raw/ctgov/studies_0009.json.gz",
+   "bytes": 3069594,
+   "bytes_stored_gz": 657413,
+   "sha256": "acafdbfcf74a21a2148a745a6ad7e79d047613608f6daeafbfbc20e0fd8f52bf",
+   "fetched_at": "2026-11-03T18:52:00+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxoYPen3fYW",
+   "path": "data/raw/ctgov/studies_0010.json.gz",
+   "bytes": 3275761,
+   "bytes_stored_gz": 703430,
+   "sha256": "1feb58a19ea1d434348e21e8cf4f3ec883b1f4771f011e0f2b17e1a3e6080588",
+   "fetched_at": "2026-11-03T18:52:01+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxnZvms1PQW",
+   "path": "data/raw/ctgov/studies_0011.json.gz",
+   "bytes": 3229056,
+   "bytes_stored_gz": 690171,
+   "sha256": "39476d7f12e47a887988297661f2499a72e10b8bfb6747a062a1f911f8a1b287",
+   "fetched_at": "2026-11-03T18:52:01+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxmZPes3fYW",
+   "path": "data/raw/ctgov/studies_0012.json.gz",
+   "bytes": 3188295,
+   "bytes_stored_gz": 686751,
+   "sha256": "e8bfec785c67d58622bf6fb556ba7c9937d92b487f1676f482fff4167f3c8dc9",
+   "fetched_at": "2026-11-03T18:52:02+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxuZfGn2v0fkA",
+   "path": "data/raw/ctgov/studies_0013.json.gz",
+   "bytes": 3242276,
+   "bytes_stored_gz": 689104,
+   "sha256": "4cac7279dc8810fe95f1425e84d3917f89259b1f319e9c594d1dd26d7143b5ef",
+   "fetched_at": "2026-11-03T18:52:03+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxuZfmk2_YYkA",
+   "path": "data/raw/ctgov/studies_0014.json.gz",
+   "bytes": 3160425,
+   "bytes_stored_gz": 689757,
+   "sha256": "76ffee8ee268c9685f4a6c9e3195aa89cce59affd72590edb81f05133d50d04a",
+   "fetched_at": "2026-11-03T18:52:04+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxuZPel3_ETkA",
+   "path": "data/raw/ctgov/studies_0015.json.gz",
+   "bytes": 3293438,
+   "bytes_stored_gz": 688633,
+   "sha256": "ea33644a22178a7c68a036b3209abb03261a390ed3fca6252eea6a1a86ec06c5",
+   "fetched_at": "2026-11-03T18:52:05+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxuZ_Wh2vIYkA",
+   "path": "data/raw/ctgov/studies_0016.json.gz",
+   "bytes": 3221975,
+   "bytes_stored_gz": 690548,
+   "sha256": "9c484ce57bff0b00a426b4d29a68752fe1bc5b07b82ee34376f1843ff9f8f477",
+   "fetched_at": "2026-11-03T18:52:05+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxuZvKl3PwYkA",
+   "path": "data/raw/ctgov/studies_0017.json.gz",
+   "bytes": 3103379,
+   "bytes_stored_gz": 669961,
+   "sha256": "d74a45f6505f70d37e6813d614bc056be80ff02a7a964290d16ef04f8e91ecae",
+   "fetched_at": "2026-11-03T18:52:06+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxuYfGs3vwdkA",
+   "path": "data/raw/ctgov/studies_0018.json.gz",
+   "bytes": 3168728,
+   "bytes_stored_gz": 673756,
+   "sha256": "e88862ab116082356a5f4b6e60cad3a06f287af45e6d0bb523dea7e9354a26d2",
+   "fetched_at": "2026-11-03T18:52:07+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxuYfmt1PcYkA",
+   "path": "data/raw/ctgov/studies_0019.json.gz",
+   "bytes": 3222720,
+   "bytes_stored_gz": 694790,
+   "sha256": "4d0d73b2ac50e8d539cc19a6344e3740e9ee968a8a9444287e6e24211fc400c7",
+   "fetched_at": "2026-11-03T18:52:08+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxuYPet2fUbkA",
+   "path": "data/raw/ctgov/studies_0020.json.gz",
+   "bytes": 3113137,
+   "bytes_stored_gz": 669142,
+   "sha256": "494f4b6d3e7ccaa9307b2bd00fff00e2b1e3a194e4a7bd9a8830b9eb3f8818e1",
+   "fetched_at": "2026-11-03T18:52:08+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxuY_St3_QTkA",
+   "path": "data/raw/ctgov/studies_0021.json.gz",
+   "bytes": 3154819,
+   "bytes_stored_gz": 677140,
+   "sha256": "43da6848e884fa9e01165bd9c799e3798a79ad87aa5cab683bddb7dcd41d57cd",
+   "fetched_at": "2026-11-03T18:52:09+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxuYvWm2vwdkA",
+   "path": "data/raw/ctgov/studies_0022.json.gz",
+   "bytes": 3229297,
+   "bytes_stored_gz": 682962,
+   "sha256": "b682708b86bd1e14af36ac54c4059a2b804bf10192d578613a7ae7d4dff3f3d1",
+   "fetched_at": "2026-11-03T18:52:10+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxubfKl1f0bkA",
+   "path": "data/raw/ctgov/studies_0023.json.gz",
+   "bytes": 3293165,
+   "bytes_stored_gz": 687658,
+   "sha256": "aa5bddb299409015432a2877511bea6614d42a10bcbcc7e104a9e5dbf653228e",
+   "fetched_at": "2026-11-03T18:52:11+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxubPCs2vUbkA",
+   "path": "data/raw/ctgov/studies_0024.json.gz",
+   "bytes": 3172775,
+   "bytes_stored_gz": 670560,
+   "sha256": "8becdbbf175ee1f6eb8726561ef5c22f35562c2738324525247a7a878f8ccf71",
+   "fetched_at": "2026-11-03T18:52:12+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxtZfGm1fwZkA",
+   "path": "data/raw/ctgov/studies_0025.json.gz",
+   "bytes": 3192621,
+   "bytes_stored_gz": 690062,
+   "sha256": "acafd00796ba0a518866ff963e26c8b5c51207cc687f06e9fdbe8c340658db38",
+   "fetched_at": "2026-11-03T18:52:12+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxtZfmi3fMZkA",
+   "path": "data/raw/ctgov/studies_0026.json.gz",
+   "bytes": 3266358,
+   "bytes_stored_gz": 698855,
+   "sha256": "2c13b12798c0c96ea4c2fe0930ad5ddc6169f8f69c847a97ab5e2bb312242c0e",
+   "fetched_at": "2026-11-03T18:52:13+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxtZPei1PYTkA",
+   "path": "data/raw/ctgov/studies_0027.json.gz",
+   "bytes": 3161335,
+   "bytes_stored_gz": 683854,
+   "sha256": "fad9d5c318703942017f7ac966a49ae5d33086f842245e279f9233ac1c609114",
+   "fetched_at": "2026-11-03T18:52:14+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxtZ_Ss3fcYkA",
+   "path": "data/raw/ctgov/studies_0028.json.gz",
+   "bytes": 3155877,
+   "bytes_stored_gz": 684432,
+   "sha256": "d06788283a57e3946208c07b055735193ba4c02e8476fbb4ef1b45c06d2c5ac5",
+   "fetched_at": "2026-11-03T18:52:15+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxtZvWh3vUbkA",
+   "path": "data/raw/ctgov/studies_0029.json.gz",
+   "bytes": 3318586,
+   "bytes_stored_gz": 700070,
+   "sha256": "8389b322cbb7fd60be8d01542d880722a11b73cab70309a162a83f2d1f9e4e7c",
+   "fetched_at": "2026-11-03T18:52:16+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxtYfOj2PYZkA",
+   "path": "data/raw/ctgov/studies_0030.json.gz",
+   "bytes": 3294281,
+   "bytes_stored_gz": 695795,
+   "sha256": "d9f4fbf0eeb91c579cba45a61acfbaf5a938e74abaf5b58ae155646f07d4c890",
+   "fetched_at": "2026-11-03T18:52:17+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxtYPGt2_MekA",
+   "path": "data/raw/ctgov/studies_0031.json.gz",
+   "bytes": 3284567,
+   "bytes_stored_gz": 712975,
+   "sha256": "8b7edfb51f5d3885efbe009d80bbea6f6f3207443a655d6d6bf53d848871dca3",
+   "fetched_at": "2026-11-03T18:52:17+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxtYPij3_QbkA",
+   "path": "data/raw/ctgov/studies_0032.json.gz",
+   "bytes": 3179304,
+   "bytes_stored_gz": 679483,
+   "sha256": "3cb7b95d141783fe1ed2975c51456097764ae1d7d7991b9e525cdf1284f70b2f",
+   "fetched_at": "2026-11-03T18:52:18+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxtY_ak1PAdkA",
+   "path": "data/raw/ctgov/studies_0033.json.gz",
+   "bytes": 3183896,
+   "bytes_stored_gz": 681695,
+   "sha256": "698b2f49a725eec549731d920ba4250929b16570fc85de1ecfc4478f24a4c298",
+   "fetched_at": "2026-11-03T18:52:19+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxtYvSh2_AYkA",
+   "path": "data/raw/ctgov/studies_0034.json.gz",
+   "bytes": 3202871,
+   "bytes_stored_gz": 686288,
+   "sha256": "7c0957ca339b4b4dad8b24ad37754476232f7fde0719d18470f723b80be12ad6",
+   "fetched_at": "2026-11-03T18:52:20+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxtbfWl2PMbkA",
+   "path": "data/raw/ctgov/studies_0035.json.gz",
+   "bytes": 3199336,
+   "bytes_stored_gz": 690782,
+   "sha256": "a5fd82b6ddfb4ecce150e479d1e59a3558ee106fee3ebffbe55ca9521408be1e",
+   "fetched_at": "2026-11-03T18:52:21+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxtbPOl1PwZkA",
+   "path": "data/raw/ctgov/studies_0036.json.gz",
+   "bytes": 3188220,
+   "bytes_stored_gz": 693679,
+   "sha256": "187290292f4b8ab8720fa47ed1611456abc1d811537e333a3d57fc57217adf72",
+   "fetched_at": "2026-11-03T18:52:21+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxsZfGi2_0SkA",
+   "path": "data/raw/ctgov/studies_0037.json.gz",
+   "bytes": 3257994,
+   "bytes_stored_gz": 695990,
+   "sha256": "081d65fa2e34c4cc89de448ade815965562d2990de84b04046190c405daf62a0",
+   "fetched_at": "2026-11-03T18:52:22+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxsZfmi2_EbkA",
+   "path": "data/raw/ctgov/studies_0038.json.gz",
+   "bytes": 3109593,
+   "bytes_stored_gz": 669287,
+   "sha256": "2c378cd5c32fa202718c89434342393bbe2302e400998a2c97ac1d1dd3a3aac6",
+   "fetched_at": "2026-11-03T18:52:23+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxsZPes2_IfkA",
+   "path": "data/raw/ctgov/studies_0039.json.gz",
+   "bytes": 3004746,
+   "bytes_stored_gz": 649520,
+   "sha256": "ee74a0c519f7e9f01e7b348ff1d24e433c155c5b1328a110cda824d20d4ff401",
+   "fetched_at": "2026-11-03T18:52:24+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxsZ_Sh2f0ckA",
+   "path": "data/raw/ctgov/studies_0040.json.gz",
+   "bytes": 3204009,
+   "bytes_stored_gz": 676688,
+   "sha256": "1c6144706627e7589d3ee5b7132539814936e4b3f82c05922845f553dbf32e30",
+   "fetched_at": "2026-11-03T18:52:25+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxsZvWg3fMakA",
+   "path": "data/raw/ctgov/studies_0041.json.gz",
+   "bytes": 3221466,
+   "bytes_stored_gz": 680374,
+   "sha256": "f69b4a71f2d77144ade385d6b884d91856663197eb3f07cff235e80b6c1b4f89",
+   "fetched_at": "2026-11-03T18:52:26+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxsYfKm1fEYkA",
+   "path": "data/raw/ctgov/studies_0042.json.gz",
+   "bytes": 3288869,
+   "bytes_stored_gz": 701285,
+   "sha256": "f5ef7c0a76fbf253b8f3ef34a7b137cc610d755572c2737b7d54819cba43d262",
+   "fetched_at": "2026-11-03T18:52:27+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxsYPOg2fQbkA",
+   "path": "data/raw/ctgov/studies_0043.json.gz",
+   "bytes": 3219072,
+   "bytes_stored_gz": 687870,
+   "sha256": "d89013128ac926997391019e44ae2a4fee8b1c31a56347de6202881a61215c1e",
+   "fetched_at": "2026-11-03T18:52:27+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxsY_Gg1fEZkA",
+   "path": "data/raw/ctgov/studies_0044.json.gz",
+   "bytes": 3158143,
+   "bytes_stored_gz": 684080,
+   "sha256": "a145ce998af71427bb78de25493c41da4dc248a20b2b050f374cc860bffadaf2",
+   "fetched_at": "2026-11-03T18:52:28+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxsY_mj1fEYkA",
+   "path": "data/raw/ctgov/studies_0045.json.gz",
+   "bytes": 3167733,
+   "bytes_stored_gz": 673060,
+   "sha256": "7c3edf08feb575c766e2f7129807e13d6a4f2d90a278bb5e6ad303b398c822fb",
+   "fetched_at": "2026-11-03T18:52:29+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxsYvan1fwakA",
+   "path": "data/raw/ctgov/studies_0046.json.gz",
+   "bytes": 3262855,
+   "bytes_stored_gz": 696920,
+   "sha256": "5b325400194f90d5da780ba165d2c7e4661b2d26f561d8a09f5e1ca48f13dff3",
+   "fetched_at": "2026-11-03T18:52:30+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxsbfSs3PYSkA",
+   "path": "data/raw/ctgov/studies_0047.json.gz",
+   "bytes": 3103707,
+   "bytes_stored_gz": 657101,
+   "sha256": "ec4b96ac14807762d258cce7186516aaaccdc32b68bab24358084398f70564fc",
+   "fetched_at": "2026-11-03T18:52:31+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxsbPKt2_0ekA",
+   "path": "data/raw/ctgov/studies_0048.json.gz",
+   "bytes": 3252137,
+   "bytes_stored_gz": 694199,
+   "sha256": "aa332f202b3c532dcc39ff5c28f1146d033e6213a0837d698276a61a1efb11d0",
+   "fetched_at": "2026-11-03T18:52:31+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxrZfOm1fIakA",
+   "path": "data/raw/ctgov/studies_0049.json.gz",
+   "bytes": 3189081,
+   "bytes_stored_gz": 669185,
+   "sha256": "71f291787c7d8e50bd5aa7db7e8a39c4797e5d54bcb71028530506a7e834604a",
+   "fetched_at": "2026-11-03T18:52:32+00:00"
+  },
+  {
+   "url": "https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA%5BLeadSponsorClass%5DINDUSTRY+AND+AREA%5BStudyType%5DINTERVENTIONAL+AND+AREA%5BPrimaryCompletionDate%5DRANGE%5B2020-01-01%2CMAX%5D&fields=NCTId%2CBriefTitle%2COfficialTitle%2CAcronym%2COverallStatus%2CWhyStopped%2CStartDate%2CStartDateType%2CPrimaryCompletionDate%2CPrimaryCompletionDateType%2CCompletionDate%2CCompletionDateType%2CStudyFirstPostDate%2CLastUpdatePostDate%2CHasResults%2CLeadSponsor%2CCollaborator%2CStudyType%2CPhase%2CEnrollmentInfo%2CDesignAllocation%2CDesignPrimaryPurpose%2CCondition%2CKeyword%2CIntervention%2CPrimaryOutcome%2CBriefSummary&pageSize=1000&format=json&pageToken=ZVNj7o2Elu8o3lpyDNCk5rLumpOQJJxrZPGl2_AbkA",
+   "path": "data/raw/ctgov/studies_0050.json.gz",
+   "bytes": 2536219,
+   "bytes_stored_gz": 547503,
+   "sha256": "d337cb3c01c10f656da1630c59d5e82784cb9816e081afc91365681833c04937",
+   "fetched_at": "2026-11-03T18:52:33+00:00"
+  }
+ ]
+}

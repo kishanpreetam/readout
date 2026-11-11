@@ -1,0 +1,33 @@
+{
+  "questions": 48,
+  "variants": {
+    "schema_docs": {
+      "answered": 48,
+      "correct": 48,
+      "execution_accuracy": 1.0,
+      "outcomes": {
+        "correct": 48
+      },
+      "repaired_after_error": 0,
+      "answers_from_model": 48,
+      "failure_categories_hand_reviewed": {}
+    },
+    "schema_only": {
+      "answered": 48,
+      "correct": 45,
+      "execution_accuracy": 0.938,
+      "outcomes": {
+        "correct": 45,
+        "wrong_result": 3
+      },
+      "repaired_after_error": 0,
+      "answers_from_model": 48,
+      "failure_categories_hand_reviewed": {
+        "phase_code_semantics": 3
+      }
+    }
+  },
+  "models": [
+    "claude-opus-5-5"
+  ]
+}

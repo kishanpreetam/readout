@@ -1,0 +1,12 @@
+# Python 3.12. Install with: uv pip install --python .venv/bin/python -r requirements.txt
+duckdb==2.0.0
+dbt-core==1.12.6
+dbt-duckdb==1.11.1
+numpy==2.5.4
+rapidfuzz==3.14.6
+requests==2.34.2
+scikit-learn==1.9.1
+sqlglot==30.29.0
+pytest==9.2.0
+# Only needed when ANTHROPIC_API_KEY is used instead of the claude command line
+anthropic==2.4.0

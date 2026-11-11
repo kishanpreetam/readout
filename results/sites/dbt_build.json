@@ -1,0 +1,12 @@
+{
+  "select": "stg_ctgov__sites+",
+  "by_kind": {
+    "model": {
+      "success": 3
+    },
+    "test": {
+      "pass": 23
+    }
+  },
+  "warnings": []
+}

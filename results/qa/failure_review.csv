@@ -1,0 +1,4 @@
+id,variant,category,note
+q13,schema_only,phase_code_semantics,"Used phase_number >= 2.5 for 'Phase 3 or Phase 2/3', which also counts Phase 4 studies (1161 vs 1003)."
+q17,schema_only,phase_code_semantics,"Same phase_number >= 2.5 filter (adds Phase 4); window bounds also shifted by one day (> and <= instead of >= and <)."
+q34,schema_only,phase_code_semantics,"Same phase_number >= 2.5 filter (adds Phase 4), which pushed Sanofi and Novartis over the threshold of 20; window bounds shifted by one day."

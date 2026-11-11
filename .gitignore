@@ -1,0 +1,23 @@
+# Raw downloads, the DuckDB file and caches stay local. Only code, labels and results are tracked.
+data/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# dbt build output
+warehouse/target/
+warehouse/logs/
+warehouse/dbt_packages/
+warehouse/.user.yml
+logs/
+
+# Secrets never belong in the repo
+.env
+.env.*
+*.key
+
+.DS_Store
+
+# Personal resume drafting notes stay local
+results/resume_lines.md

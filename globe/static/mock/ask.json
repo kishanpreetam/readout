@@ -1,0 +1,117 @@
+{
+ "question": "Which German cities have the most recruiting phase 3 trials?",
+ "sql": "SELECT s.city, s.geo_key, count(DISTINCT s.nct_id) AS recruiting_phase3_trials,\n       count(*) AS sites\nFROM marts.fct_trial_sites AS s\nJOIN marts.dim_trial AS t USING (nct_id)\nWHERE s.country = 'Germany'\n  AND t.overall_status = 'RECRUITING'\n  AND t.phase IN ('PHASE3', 'PHASE2_PHASE3')\n  AND s.geo_key IS NOT NULL\nGROUP BY s.city, s.geo_key\nORDER BY recruiting_phase3_trials DESC\nLIMIT 500",
+ "columns": [
+  "city",
+  "geo_key",
+  "recruiting_phase3_trials",
+  "sites"
+ ],
+ "rows": [
+  [
+   "Berlin",
+   "52.5200,13.4050",
+   283,
+   453
+  ],
+  [
+   "Hamburg",
+   "53.5511,9.9937",
+   190,
+   304
+  ],
+  [
+   "Munich",
+   "48.1351,11.5820",
+   176,
+   282
+  ],
+  [
+   "Frankfurt",
+   "50.1109,8.6821",
+   151,
+   242
+  ],
+  [
+   "Heidelberg",
+   "49.3988,8.6724",
+   139,
+   222
+  ],
+  [
+   "Cologne",
+   "50.9375,6.9603",
+   120,
+   192
+  ],
+  [
+   "Dresden",
+   "51.0504,13.7373",
+   118,
+   189
+  ],
+  [
+   "Leipzig",
+   "51.3397,12.3731",
+   104,
+   166
+  ],
+  [
+   "Hannover",
+   "52.3759,9.7320",
+   101,
+   162
+  ],
+  [
+   "Mainz",
+   "49.9929,8.2473",
+   96,
+   154
+  ],
+  [
+   "Essen",
+   "51.4556,7.0116",
+   88,
+   141
+  ],
+  [
+   "Tübingen",
+   "48.5216,9.0576",
+   84,
+   134
+  ],
+  [
+   "Freiburg",
+   "47.9990,7.8421",
+   77,
+   123
+  ],
+  [
+   "Düsseldorf",
+   "51.2277,6.7735",
+   72,
+   115
+  ]
+ ],
+ "row_count": 14,
+ "nct_ids": [],
+ "geo_keys": [
+  "52.5200,13.4050",
+  "53.5511,9.9937",
+  "48.1351,11.5820",
+  "50.1109,8.6821",
+  "49.3988,8.6724",
+  "50.9375,6.9603",
+  "51.0504,13.7373",
+  "51.3397,12.3731",
+  "52.3759,9.7320",
+  "49.9929,8.2473",
+  "51.4556,7.0116",
+  "48.5216,9.0576",
+  "47.9990,7.8421",
+  "51.2277,6.7735"
+ ],
+ "model": "claude-opus-5-5",
+ "seconds": 5.2,
+ "cached": false
+}

@@ -1,0 +1,80 @@
+{
+  "sponsor_names": 10998,
+  "organizations": 10508,
+  "names_merged_away": 490,
+  "organizations_with_several_names": 337,
+  "names_in_multi_name_organizations": 827,
+  "names_with_ownership_or_alias_clause": 120,
+  "parent_links": 87,
+  "parents_not_seen_as_sponsors": 11,
+  "candidate_pairs_compared": 22323,
+  "merging_pairs_by_rule": {
+    "exact": 153,
+    "affiliate": 225,
+    "core": 83,
+    "parent_clause": 56,
+    "fuzzy": 33
+  },
+  "largest_organizations": [
+    {
+      "organization": "Merck & Co., Inc.",
+      "name_variants": 14,
+      "trials": 988
+    },
+    {
+      "organization": "Sanofi",
+      "name_variants": 12,
+      "trials": 544
+    },
+    {
+      "organization": "Janssen Research & Development, LLC",
+      "name_variants": 10,
+      "trials": 492
+    },
+    {
+      "organization": "Eli Lilly and Company",
+      "name_variants": 8,
+      "trials": 746
+    },
+    {
+      "organization": "Pfizer",
+      "name_variants": 8,
+      "trials": 891
+    },
+    {
+      "organization": "Astellas Pharma Global Development, Inc.",
+      "name_variants": 7,
+      "trials": 154
+    },
+    {
+      "organization": "BridgeBio",
+      "name_variants": 7,
+      "trials": 29
+    },
+    {
+      "organization": "Bristol-Myers Squibb",
+      "name_variants": 7,
+      "trials": 697
+    },
+    {
+      "organization": "Biogen",
+      "name_variants": 6,
+      "trials": 139
+    },
+    {
+      "organization": "Eisai Inc.",
+      "name_variants": 5,
+      "trials": 114
+    },
+    {
+      "organization": "GSK",
+      "name_variants": 5,
+      "trials": 27
+    },
+    {
+      "organization": "Gossamer Bio, Inc",
+      "name_variants": 5,
+      "trials": 8
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+[
+ {
+  "id": "g01",
+  "question": "How many Phase 3 trials (phase exactly Phase 3, not Phase 2/3) have at least one site in Germany?",
+  "kind": "count",
+  "gold_sql": "select count(*) from marts.dim_trial t where t.phase = 'PHASE3' and exists (select 1 from marts.fct_trial_sites s where s.nct_id = t.nct_id and s.country = 'Germany')",
+  "note": "Count distinct trials, not site rows: one trial lists many German sites. Phase must be exactly PHASE3, not PHASE2_PHASE3."
+ },
+ {
+  "id": "g02",
+  "question": "How many trials with the status RECRUITING have at least one site in Japan?",
+  "kind": "count",
+  "gold_sql": "select count(*) from marts.dim_trial t where t.overall_status = 'RECRUITING' and exists (select 1 from marts.fct_trial_sites s where s.nct_id = t.nct_id and s.country = 'Japan')",
+  "note": "Trial status (overall_status), not site_status. About 27% of Japanese sites have no coordinates, so a join through dim_site_location undercounts."
+ },
+ {
+  "id": "g03",
+  "question": "How many Phase 3 trials (phase exactly Phase 3, not Phase 2/3) with the status RECRUITING have at least one site in San Diego?",
+  "kind": "count",
+  "gold_sql": "select count(*) from marts.dim_trial t where t.phase = 'PHASE3' and t.overall_status = 'RECRUITING' and exists (select 1 from marts.fct_trial_sites s where s.nct_id = t.nct_id and s.city = 'San Diego')",
+  "note": "Three filters at once: exact phase, trial status and city. City is an exact match on 'San Diego'. Distinct trials, not site rows."
+ },
+ {
+  "id": "g04",
+  "question": "How many active trials (status RECRUITING, NOT_YET_RECRUITING, ACTIVE_NOT_RECRUITING or ENROLLING_BY_INVITATION) have at least one site in Massachusetts?",
+  "kind": "count",
+  "gold_sql": "select count(*) from marts.dim_trial t where t.is_active and exists (select 1 from marts.fct_trial_sites s where s.nct_id = t.nct_id and s.state = 'Massachusetts')",
+  "note": "Active means is_active, which covers four statuses. The state is spelled out in the data, not 'MA'. Distinct trials."
+ },
+ {
+  "id": "g05",
+  "question": "How many active Phase 3 or Phase 2/3 trials with primary completion on or after 2026-11-03 and before 2027-11-03 have at least one site in France?",
+  "kind": "count",
+  "gold_sql": "select count(*) from marts.dim_trial t where t.is_active and t.phase in ('PHASE3', 'PHASE2_PHASE3') and t.primary_completion_date >= date '2026-11-03' and t.primary_completion_date < date '2027-11-03' and exists (select 1 from marts.fct_trial_sites s where s.nct_id = t.nct_id and s.country = 'France')",
+  "note": "The window starts on the as-of date and ends before the same day one year later. Phase 3 and Phase 2/3 together, active only, distinct trials."
+ },
+ {
+  "id": "g06",
+  "question": "How many of the upcoming readouts (active Phase 2, 2/3 or 3 trials with primary completion in the 12 months after 2026-11-03) have at least one site in Spain? Count each trial once.",
+  "kind": "count",
+  "gold_sql": "select count(distinct u.nct_id) from marts.mart_upcoming_readouts u where exists (select 1 from marts.fct_trial_sites s where s.nct_id = u.nct_id and s.country = 'Spain')",
+  "note": "mart_upcoming_readouts has one row per trial and organization, so counting its rows, or joining it to the site table, inflates the count. Count distinct trials."
+ },
+ {
+  "id": "g07",
+  "question": "How many Phase 3 trials (phase exactly Phase 3, not Phase 2/3) led by Eli Lilly and Company have at least one site in Australia?",
+  "kind": "count",
+  "gold_sql": "select count(*) from marts.dim_trial t where t.lead_org_name = 'Eli Lilly and Company' and t.phase = 'PHASE3' and exists (select 1 from marts.fct_trial_sites s where s.nct_id = t.nct_id and s.country = 'Australia')",
+  "note": "Lead sponsor is the resolved organization (lead_org_name). Exact phase, distinct trials."
+ },
+ {
+  "id": "g08",
+  "question": "How many trials with a site in Florida list a condition containing the text 'diabetes' (case-insensitive)?",
+  "kind": "count",
+  "gold_sql": "select count(*) from marts.dim_trial t where t.conditions ilike '%diabetes%' and exists (select 1 from marts.fct_trial_sites s where s.nct_id = t.nct_id and s.state = 'Florida')",
+  "note": "conditions is one '; ' separated text field, matched with ILIKE on the stated text. State is the full name. Distinct trials."
+ },
+ {
+  "id": "g09",
+  "question": "How many trials with a site in Houston list a condition containing the text 'breast cancer' (case-insensitive)?",
+  "kind": "count",
+  "gold_sql": "select count(*) from marts.dim_trial t where t.conditions ilike '%breast cancer%' and exists (select 1 from marts.fct_trial_sites s where s.nct_id = t.nct_id and s.city = 'Houston')",
+  "note": "Substring match on conditions only, not on titles. Exact city match. One trial can list many Houston sites, so count distinct trials."
+ },
+ {
+  "id": "g10",
+  "question": "Which US state has the most Phase 3 trials (phase exactly Phase 3, not Phase 2/3) with a site there? Count each trial once per state.",
+  "kind": "text",
+  "gold_sql": "select s.state, count(distinct s.nct_id) as n_trials from marts.fct_trial_sites s join marts.dim_trial t on t.nct_id = s.nct_id where s.country = 'United States' and t.phase = 'PHASE3' group by s.state order by n_trials desc limit 2",
+  "note": "Counting site rows instead of distinct trials changes the winner. Restrict to the United States, because state also holds provinces and regions elsewhere."
+ },
+ {
+  "id": "g11",
+  "question": "Outside the United States, which country has the most Phase 3 trials (phase exactly Phase 3, not Phase 2/3) with a site there? Count each trial once per country.",
+  "kind": "text",
+  "gold_sql": "select s.country, count(distinct s.nct_id) as n_trials from marts.fct_trial_sites s join marts.dim_trial t on t.nct_id = s.nct_id where t.phase = 'PHASE3' and s.country <> 'United States' group by s.country order by n_trials desc limit 2",
+  "note": "Exclude the United States and count distinct trials per country, not site rows. Hong Kong is a separate country value, not part of China."
+ },
+ {
+  "id": "g12",
+  "question": "Which organization leads the most trials that have at least one site in China?",
+  "kind": "text",
+  "gold_sql": "select t.lead_org_name, count(*) as n_trials from marts.dim_trial t where exists (select 1 from marts.fct_trial_sites s where s.nct_id = t.nct_id and s.country = 'China') group by t.lead_org_name order by n_trials desc limit 2",
+  "note": "Rank resolved lead organizations (lead_org_name) over trials with a China site, one count per trial. Hong Kong is a separate country value."
+ },
+ {
+  "id": "g13",
+  "question": "Which Canadian province has the most trials with at least one site there? Count each trial once per province.",
+  "kind": "text",
+  "gold_sql": "select s.state, count(distinct s.nct_id) as n_trials from marts.fct_trial_sites s where s.country = 'Canada' and s.state is not null group by s.state order by n_trials desc limit 2",
+  "note": "Provinces live in the state column. Some Canadian sites have no state, so that group must not be the answer. Distinct trials, not site rows."
+ },
+ {
+  "id": "g14",
+  "question": "Excluding the United States, which three countries have the most trials with the status RECRUITING and a site there? Count each trial once per country and list the country names.",
+  "kind": "list",
+  "gold_sql": "select country from (select s.country, count(distinct s.nct_id) as n_trials from marts.fct_trial_sites s join marts.dim_trial t on t.nct_id = s.nct_id where t.overall_status = 'RECRUITING' and s.country <> 'United States' group by s.country order by n_trials desc limit 3)",
+  "note": "Top three by distinct trials after excluding the United States. Trial status, not site_status. The answer must be exactly three rows."
+ },
+ {
+  "id": "g15",
+  "question": "Which Texas cities have more than 1,500 trials with at least one site in the city? List their city names.",
+  "kind": "list",
+  "gold_sql": "select s.city from marts.fct_trial_sites s where s.state = 'Texas' group by s.city having count(distinct s.nct_id) > 1500",
+  "note": "Group by city inside the state, count distinct trials per city and keep cities above the threshold. A city can have several map points, so per-point counts need adding up."
+ },
+ {
+  "id": "g16",
+  "question": "List the NCT IDs of the active Phase 3 or Phase 2/3 trials led by AstraZeneca with primary completion on or after 2026-11-03 and before 2027-11-03 that have at least one site in Boston.",
+  "kind": "list",
+  "gold_sql": "select t.nct_id from marts.dim_trial t where t.lead_org_name = 'AstraZeneca' and t.is_active and t.phase in ('PHASE3', 'PHASE2_PHASE3') and t.primary_completion_date >= date '2026-11-03' and t.primary_completion_date < date '2027-11-03' and exists (select 1 from marts.fct_trial_sites s where s.nct_id = t.nct_id and s.city = 'Boston')",
+  "note": "Combines lead organization, a phase set, the 12-month window and a city filter. One NCT ID per trial, with no duplicates from the site join."
+ },
+ {
+  "id": "g17",
+  "question": "What percentage of Phase 3 trials (phase exactly Phase 3, not Phase 2/3) with a site in Italy have the status RECRUITING? Round to one decimal place.",
+  "kind": "number",
+  "gold_sql": "select round(100.0 * count(*) filter (where t.overall_status = 'RECRUITING') / count(*), 1) from marts.dim_trial t where t.phase = 'PHASE3' and exists (select 1 from marts.fct_trial_sites s where s.nct_id = t.nct_id and s.country = 'Italy')",
+  "note": "The percentage is over distinct trials with an Italian site, not over site rows. Round to one decimal place."
+ },
+ {
+  "id": "g18",
+  "question": "What is the median enrollment count of Phase 3 trials (phase exactly Phase 3, not Phase 2/3) that have a site in Japan? Count each trial once.",
+  "kind": "number",
+  "gold_sql": "select median(t.enrollment_count) from marts.dim_trial t where t.phase = 'PHASE3' and t.enrollment_count is not null and exists (select 1 from marts.fct_trial_sites s where s.nct_id = t.nct_id and s.country = 'Japan')",
+  "note": "Take the median over distinct trials. Joining to the site table first weights each trial by its number of Japanese sites and gives a much larger number."
+ },
+ {
+  "id": "g19",
+  "question": "What is the earliest primary completion date on or after 2026-11-03 among active Phase 3 trials (phase exactly Phase 3, not Phase 2/3) with a site in Boston?",
+  "kind": "date",
+  "gold_sql": "select min(t.primary_completion_date) from marts.dim_trial t where t.is_active and t.phase = 'PHASE3' and t.primary_completion_date >= date '2026-11-03' and exists (select 1 from marts.fct_trial_sites s where s.nct_id = t.nct_id and s.city = 'Boston')",
+  "note": "The lower bound matters: many active trials are overdue and have primary completion dates before the as-of date."
+ },
+ {
+  "id": "g20",
+  "question": "What is the latest primary completion date among active Phase 3 trials (phase exactly Phase 3, not Phase 2/3) led by Pfizer that have a site in the United Kingdom?",
+  "kind": "date",
+  "gold_sql": "select max(t.primary_completion_date) from marts.dim_trial t where t.is_active and t.phase = 'PHASE3' and t.lead_org_name = 'Pfizer' and exists (select 1 from marts.fct_trial_sites s where s.nct_id = t.nct_id and s.country = 'United Kingdom')",
+  "note": "Latest date over active Pfizer Phase 3 trials with a United Kingdom site. No lower bound. Lead sponsor is the resolved organization."
+ }
+]

@@ -1,0 +1,115 @@
+{
+ "as_of": "2026-11-03",
+ "sites_fetched_at": "2026-11-11T18:00:00Z",
+ "trials": 49798,
+ "trials_with_geo": 41236,
+ "sites": 201459,
+ "points": 315,
+ "phases": [
+  {
+   "value": "EARLY_PHASE1",
+   "label": "Early Phase 1",
+   "count": 310
+  },
+  {
+   "value": "PHASE1",
+   "label": "Phase 1",
+   "count": 13950
+  },
+  {
+   "value": "PHASE1_PHASE2",
+   "label": "Phase 1/2",
+   "count": 2960
+  },
+  {
+   "value": "PHASE2",
+   "label": "Phase 2",
+   "count": 10870
+  },
+  {
+   "value": "PHASE2_PHASE3",
+   "label": "Phase 2/3",
+   "count": 1050
+  },
+  {
+   "value": "PHASE3",
+   "label": "Phase 3",
+   "count": 8239
+  },
+  {
+   "value": "PHASE4",
+   "label": "Phase 4",
+   "count": 4180
+  },
+  {
+   "value": "NA",
+   "label": "Not applicable",
+   "count": 7810
+  },
+  {
+   "value": "UNKNOWN",
+   "label": "Unknown",
+   "count": 429
+  }
+ ],
+ "statuses": [
+  {
+   "value": "RECRUITING",
+   "label": "Recruiting",
+   "active": true,
+   "count": 8671
+  },
+  {
+   "value": "NOT_YET_RECRUITING",
+   "label": "Not yet recruiting",
+   "active": true,
+   "count": 2140
+  },
+  {
+   "value": "ACTIVE_NOT_RECRUITING",
+   "label": "Active, not recruiting",
+   "active": true,
+   "count": 4820
+  },
+  {
+   "value": "ENROLLING_BY_INVITATION",
+   "label": "Enrolling by invitation",
+   "active": true,
+   "count": 610
+  },
+  {
+   "value": "COMPLETED",
+   "label": "Completed",
+   "active": false,
+   "count": 27950
+  },
+  {
+   "value": "TERMINATED",
+   "label": "Terminated",
+   "active": false,
+   "count": 3610
+  },
+  {
+   "value": "WITHDRAWN",
+   "label": "Withdrawn",
+   "active": false,
+   "count": 1180
+  },
+  {
+   "value": "SUSPENDED",
+   "label": "Suspended",
+   "active": false,
+   "count": 170
+  },
+  {
+   "value": "UNKNOWN",
+   "label": "Unknown",
+   "active": false,
+   "count": 647
+  }
+ ],
+ "months": {
+  "min": "2020-01",
+  "max": "2030-12"
+ }
+}

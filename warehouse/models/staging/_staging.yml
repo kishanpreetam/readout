@@ -1,0 +1,115 @@
+version: 2
+
+models:
+  - name: stg_ctgov__studies
+    description: Typed ClinicalTrials.gov studies. Month-only dates become the last day of the month, with a precision column.
+    columns:
+      - name: nct_id
+        description: ClinicalTrials.gov identifier.
+        data_tests: [unique, not_null]
+      - name: phase
+        description: One phase code per study; combined phases such as Phase 2 and 3 get their own code.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [EARLY_PHASE1, PHASE1, PHASE1_PHASE2, PHASE2, PHASE2_PHASE3, PHASE3, PHASE4, NA, UNKNOWN]
+      - name: overall_status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [ACTIVE_NOT_RECRUITING, COMPLETED, ENROLLING_BY_INVITATION, NOT_YET_RECRUITING, RECRUITING,
+                         SUSPENDED, TERMINATED, WITHDRAWN, UNKNOWN, AVAILABLE, NO_LONGER_AVAILABLE,
+                         TEMPORARILY_NOT_AVAILABLE, APPROVED_FOR_MARKETING, WITHHELD]
+      - name: primary_completion_date_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [ACTUAL, ESTIMATED, UNKNOWN]
+      - name: study_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [INTERVENTIONAL]
+      - name: lead_sponsor_class
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [INDUSTRY]
+
+  - name: stg_ctgov__sponsors
+    description: Lead sponsors and collaborators, one row per study and organization.
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [nct_id, sponsor_name]
+    columns:
+      - name: sponsor_role
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [lead, collaborator]
+      - name: nct_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_ctgov__studies')
+                field: nct_id
+
+  - name: stg_ctgov__conditions
+    description: Conditions listed on each study.
+  - name: stg_ctgov__interventions
+    description: Interventions listed on each study.
+  - name: stg_ctgov__primary_outcomes
+    description: Primary outcome measures listed on each study.
+
+  - name: stg_sec__companies
+    description: The SEC company universe.
+    columns:
+      - name: cik
+        data_tests: [unique, not_null]
+      - name: sic
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [2834, 2836]
+
+  - name: stg_sec__facts
+    description: XBRL facts mapped to the metrics the warehouse uses, with a priority per concept.
+    columns:
+      - name: metric
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [cash_and_equivalents, short_term_investments, rd_expense, net_income, operating_cash_flow, revenue]
+      - name: period_kind
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [instant, duration]
+
+  - name: stg_links__sponsor_company
+    description: Sponsor-to-company links from the Python linker.
+    columns:
+      - name: sponsor_name
+        data_tests: [unique, not_null]
+      - name: link_method
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [exact, core, affiliate, fuzzy, exact_parenthetical, core_parenthetical,
+                         affiliate_parenthetical, none, ambiguous]
+
+  - name: stg_resolution__sponsor_organizations
+    description: Sponsor names with their resolved organization.
+    columns:
+      - name: sponsor_name
+        data_tests: [unique, not_null]
+      - name: org_id
+        data_tests: [not_null]
+      - name: name_clause
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [none, subsidiary, aka, merged]

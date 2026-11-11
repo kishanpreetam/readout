@@ -1,0 +1,10 @@
+{
+  "status": "refused",
+  "stage": "tickers",
+  "http_status": 403,
+  "url": "https://www.sec.gov/files/company_tickers_exchange.json",
+  "requests_made": 1,
+  "note": "SEC refused the request. SEC fetching stopped; the pipeline continues without SEC data.",
+  "user_agent": "Readout biotech research project (github.com/kishanpreetam)",
+  "checked_at": "2026-11-04T04:13:41+00:00"
+}

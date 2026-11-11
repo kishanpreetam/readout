@@ -1,0 +1,147 @@
+{
+ "question": "Which active phase 3 trials with sites in Japan finish in the next 12 months?",
+ "sql": "SELECT t.nct_id, t.brief_title, t.lead_org_name, t.phase, t.primary_completion_date,\n       count(*) AS japan_sites\nFROM marts.dim_trial AS t\nJOIN marts.fct_trial_sites AS s USING (nct_id)\nWHERE s.country = 'Japan'\n  AND t.is_active\n  AND t.phase IN ('PHASE3', 'PHASE2_PHASE3')\n  AND t.primary_completion_date >= DATE '2026-11-03'\n  AND t.primary_completion_date < DATE '2027-11-03'\nGROUP BY ALL\nORDER BY t.primary_completion_date\nLIMIT 500",
+ "columns": [
+  "nct_id",
+  "brief_title",
+  "lead_org_name",
+  "phase",
+  "primary_completion_date",
+  "japan_sites"
+ ],
+ "rows": [
+  [
+   "NCT00000101",
+   "EXP-777 versus standard care in HER2-positive early breast cancer (sample)",
+   "Example Pharma",
+   "PHASE2_PHASE3",
+   "2026-11-30",
+   2
+  ],
+  [
+   "NCT00000113",
+   "MCK-720 in paroxysmal nocturnal hemoglobinuria (sample)",
+   "Example Pharma",
+   "PHASE2_PHASE3",
+   "2026-11-30",
+   10
+  ],
+  [
+   "NCT00000102",
+   "SMP-330 once weekly for obesity in adults with type 2 diabetes (sample)",
+   "Example Neuroscience",
+   "PHASE3",
+   "2026-12-31",
+   9
+  ],
+  [
+   "NCT00000114",
+   "PLC-150 in adults with lupus nephritis (sample)",
+   "Example Neuroscience",
+   "PHASE3",
+   "2026-12-31",
+   17
+  ],
+  [
+   "NCT00000103",
+   "MCK-RSV2 vaccine in adults aged 60 years and older (sample)",
+   "Example Dermatology",
+   "PHASE3",
+   "2027-01-31",
+   16
+  ],
+  [
+   "NCT00000104",
+   "PLC-610 in previously untreated advanced gastric cancer (sample)",
+   "Placeholder Biologics",
+   "PHASE3",
+   "2027-02-28",
+   4
+  ],
+  [
+   "NCT00000105",
+   "DMO-480 in adults with chronic hepatitis B (sample)",
+   "Placeholder Immunology",
+   "PHASE2_PHASE3",
+   "2027-03-31",
+   11
+  ],
+  [
+   "NCT00000106",
+   "EXP-512 in moderate to severe Crohn's disease (sample)",
+   "Sample Biotherapeutics",
+   "PHASE3",
+   "2027-04-30",
+   18
+  ],
+  [
+   "NCT00000107",
+   "SMP-118 eye drops for neovascular age-related macular degeneration (sample)",
+   "Sample Cardio",
+   "PHASE3",
+   "2027-05-31",
+   6
+  ],
+  [
+   "NCT00000108",
+   "MCK-640 in adults with generalized myasthenia gravis (sample)",
+   "Sample Ophthalmics",
+   "PHASE3",
+   "2027-06-30",
+   13
+  ],
+  [
+   "NCT00000109",
+   "PLC-102 in adolescents with atopic dermatitis (sample)",
+   "Mock Vaccines",
+   "PHASE2_PHASE3",
+   "2027-07-31",
+   20
+  ],
+  [
+   "NCT00000110",
+   "DMO-305 in non-small cell lung cancer with EGFR mutations (sample)",
+   "Mock Rare Disease",
+   "PHASE3",
+   "2027-08-31",
+   8
+  ],
+  [
+   "NCT00000111",
+   "EXP-260 for the prevention of migraine (sample)",
+   "Demo Oncology",
+   "PHASE3",
+   "2027-09-30",
+   15
+  ],
+  [
+   "NCT00000112",
+   "SMP-640 for hypertrophic cardiomyopathy (sample)",
+   "Demo Gene Therapy",
+   "PHASE3",
+   "2027-10-31",
+   3
+  ]
+ ],
+ "row_count": 14,
+ "nct_ids": [
+  "NCT00000101",
+  "NCT00000113",
+  "NCT00000102",
+  "NCT00000114",
+  "NCT00000103",
+  "NCT00000104",
+  "NCT00000105",
+  "NCT00000106",
+  "NCT00000107",
+  "NCT00000108",
+  "NCT00000109",
+  "NCT00000110",
+  "NCT00000111",
+  "NCT00000112"
+ ],
+ "geo_keys": [],
+ "model": "claude-opus-5-5",
+ "seconds": 6.4,
+ "cached": false
+}
