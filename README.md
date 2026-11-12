@@ -9,13 +9,15 @@ Open `results/report.html` for the tables and charts.
 
 ## Results (snapshot of 2026-11-03)
 
-Every number below comes from a run saved under `results/`.
+Every number below comes from a run saved under `results/`. The gold labels, gold SQL and error reviews
+behind them were made by a Claude-based AI agent following the written rules in `docs/labeling.md`; no
+person has reviewed them yet (see Limitations).
 
 | What | Result | Source file |
 |---|---|---|
 | Studies loaded | 49,798 interventional, industry-sponsored studies with primary completion in 2020 or later | `results/data_manifest.json` |
 | Sponsor resolution | 10,998 sponsor name strings resolved to 10,508 organizations | `results/resolution/summary.json` |
-| Resolution precision, 20 largest groups | 97.5% of names placed in a group belong there (209 hand-labeled member names) | `results/resolution/metrics.json` |
+| Resolution precision, 20 largest groups | 97.5% of names placed in a group belong there (209 labeled member names) | `results/resolution/metrics.json` |
 | Resolution recall, 20 largest groups | 84.8% of the groups' trials attributed to the right group; 37.8% of their names | same |
 | Recall by kind of name | spelling or unit variants 83.3% (35 of 42); names that state their parent 75.0% (36 of 48); separately named subsidiaries 6.7% (8 of 119) | same |
 | Long-tail audit | 83.1% of audited merges correct (49 of 59); 8.6% of look-alike pairs kept apart were in fact the same company (5 of 58) | same |
@@ -92,10 +94,10 @@ To fill them with real data, set `READOUT_SEC_USER_AGENT` to a declared contact 
    completion, actual or anticipated), `fct_financials`, `mart_upcoming_readouts`, `mart_org_pipeline`,
    `mart_cash_runway` and `mart_readout_runway_risk`. Window functions handle deduplication, trailing 12-month
    burn and ranking. Tests cover unique, not null, relationships, accepted values and custom expressions.
-5. **Evaluate resolution** against hand labels (see `docs/labeling.md`).
+5. **Evaluate resolution** against the gold labels (see `docs/labeling.md`).
 6. **Extract entities** (conditions, interventions, primary endpoint) from trial text with a model and with a
    dictionary baseline built only from other studies, scored against the registry's structured fields.
-7. **Question answering.** 48 questions with hand-written gold SQL. The model writes DuckDB SQL under two
+7. **Question answering.** 48 questions with gold SQL written in advance. The model writes DuckDB SQL under two
    prompts (schema only; schema plus column meanings, code values and three worked examples). With the
    documented prompt, an SQL error gets one repair attempt (none was needed). Model SQL runs in a sandbox:
    sqlglot must parse exactly one SELECT, a deny list blocks file, network and settings functions, and DuckDB
@@ -158,7 +160,7 @@ readout/          Python package: fetch, load, names, clauses, resolve, linking,
                   text-to-SQL benchmark, SQL sandbox, LLM client, report
 warehouse/        dbt project (models, tests, macros)
 globe/            Readout Globe: API server, question answering, eval set, and the page in globe/static
-labels/           hand labels for sponsor resolution, with the search terms used to find candidates
+labels/           gold labels for sponsor resolution, with the search terms used to find candidates
 docs/labeling.md  exactly how every label was made
 results/          metrics as JSON, predictions, reviews, report.html, data manifest
 tests/            pytest suite
@@ -179,7 +181,10 @@ tests/            pytest suite
   would be needed to separate stronger prompts.
 - Anticipated dates are sponsors' forecasts and slip often; a readout date here is a registry date, not a data
   release.
-- All labels were made by one reviewer; there is no second-annotator agreement measure.
+- All labels, the gold SQL and the error reviews were made by one Claude-based AI agent, the same model
+  family that Readout evaluates, following `docs/labeling.md`. No person has reviewed them yet and there is
+  no second-annotator agreement measure, so treat them as a careful first pass. The text-to-SQL and
+  extraction results in particular may favor the model's own habits.
 - Globe points are city centroids from the registry, not hospitals. 2.9% of site rows have no coordinates
   (27% of Japanese sites, whose cities are listed as wards), and 284 trials have sites but none mapped.
 - Sites were fetched on 2026-11-11, eight days after the trial snapshot. Studies registered since then are left

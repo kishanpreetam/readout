@@ -315,10 +315,11 @@ built and tested on a synthetic fixture; set <code>READOUT_SEC_USER_AGENT</code>
         s.append(f"""<p>{fmt(rsum['sponsor_names'])} sponsor strings became {fmt(rsum['organizations'])} organizations.
 Rules merge spellings and units of one company; ownership clauses that sponsors write into their names
 (“a wholly owned subsidiary of Pfizer”, “a GSK company”) roll subsidiaries up to parents. No
-hand-made alias list is used, so the labels below are independent of the resolver.</p>""")
+hand-made alias list is used, so the labels below are independent of the resolver. The labels were made by an
+AI agent following docs/labeling.md and have not been reviewed by a person.</p>""")
         s.append('<div class="tiles">'
                  + tile(pct(g["name_precision_micro"]), "precision on the 20 largest groups",
-                        f"{g['gold_member_names']} hand-labeled member names")
+                        f"{g['gold_member_names']} labeled member names")
                  + tile(pct(g["trial_recall_micro"]), "of their trials attributed correctly", "trial-weighted recall")
                  + tile(pct(g["name_recall_micro"]), "of their names found", "name-level recall")
                  + (tile(pct(audit['merged']['share_same']), "precision on long-tail merges",
@@ -356,7 +357,7 @@ The baseline matches dictionaries built only from other studies; the model is {e
                        {2, 3, 4, 5}))
         hr = ext.get("hand_review_of_sampled_disagreements") or {}
         if hr:
-            s.append(f"""<p>A hand review of {hr['reviewed']} of the model's {ext.get('llm_disagreements_total')}
+            s.append(f"""<p>A review of {hr['reviewed']} of the model's {ext.get('llm_disagreements_total')}
 disagreements with the registry found {hr.get('same_concept_different_wording', 0)} cases of the same concept in
 different words, {hr.get('granularity', 0)} differences in granularity, {hr.get('valid_but_not_registered', 0)}
 valid items the registry does not list, {hr.get('registry_item_not_in_text', 0)} registry items absent from the
@@ -368,7 +369,7 @@ model.</p>""")
         s.append("<h2>Question answering over the warehouse</h2>")
         from .qa import QUESTIONS
         n_multi = sum(1 for x in QUESTIONS if int(x[0][1:]) > 36)
-        s.append(f"""<p>{qa['questions']} questions with hand-written gold SQL ({qa['questions'] - n_multi} single-step,
+        s.append(f"""<p>{qa['questions']} questions with gold SQL written in advance ({qa['questions'] - n_multi} single-step,
 {n_multi} multi-step). The model
 writes DuckDB SQL, which runs in a read-only sandbox (one SELECT only, file and network access off, timeout);
 the result must equal the gold answer.</p>""")
@@ -403,7 +404,7 @@ the result must equal the gold answer.</p>""")
                 for c, n in (v.get("failure_categories_hand_reviewed") or {}).items():
                     cats[c] = cats.get(c, 0) + n
             if cats.get("phase_code_semantics") == len(wrong):
-                s.append("<p>Hand review: every miss has the same cause. Without documented phase codes the model "
+                s.append("<p>Review: every miss has the same cause. Without documented phase codes the model "
                          "filtered <code>phase_number &gt;= 2.5</code> for “Phase 3 or Phase 2/3”, which also "
                          "counts Phase 4. The documented prompt answered all of these correctly.</p>")
             elif cats:

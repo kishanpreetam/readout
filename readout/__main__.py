@@ -106,7 +106,7 @@ def bench() -> None:
 
 
 def rescore() -> None:
-    """Recompute every hand-label metric from the label files, with no network and no model calls."""
+    """Recompute every label-based metric from the label files, with no network and no model calls."""
     from . import extract as extractor, qa, resolution_eval
 
     resolution_eval.run()

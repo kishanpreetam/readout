@@ -1,8 +1,8 @@
-"""Evaluate sponsor resolution against hand-made labels.
+"""Evaluate sponsor resolution against the gold labels in labels/.
 
 Two label files (see docs/labeling.md for exactly how they were made):
   labels/resolution_gold_groups.csv   every sponsor name of the 20 corporate groups that lead the most studies,
-                                      found by keyword search and judged by hand (member, NONE or UNSURE)
+                                      found by keyword search and judged against written rules (member, NONE or UNSURE)
   labels/resolution_pair_audit.csv    seeded random pairs outside those groups: pairs the resolver merged
                                       (precision audit) and similar pairs it did not merge (miss audit)
 """

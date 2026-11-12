@@ -250,7 +250,7 @@ def score(trials: list[dict], preds: dict[str, dict], gold_by_id: dict[str, dict
 
 
 def _review_summary() -> dict | None:
-    """Counts from the hand review of sampled disagreements (results/extraction/error_review.csv), if present."""
+    """Counts from the review of sampled disagreements (results/extraction/error_review.csv), if present."""
     path = OUT / "error_review.csv"
     if not path.exists():
         return None

@@ -1,5 +1,5 @@
 {
-  "_about": "Search terms used to find every sponsor name that might belong to each of the 20 corporate groups whose names lead the most studies in the snapshot. Each hit was then judged by hand; see labels/resolution_gold_groups.csv and docs/labeling.md.",
+  "_about": "Search terms used to find every sponsor name that might belong to each of the 20 corporate groups whose names lead the most studies in the snapshot. Each hit was then judged against the written rules by an AI agent; see labels/resolution_gold_groups.csv and docs/labeling.md.",
   "AstraZeneca": ["astrazeneca", "astra zeneca", "medimmune", "alexion", "acerta", "achillion", "portola", "syntimmune", "pearl therapeutics", "ardea", "fusion pharma", "gracell", "amolyt", "cincor", "neogene", "esobiotec", "zeneca"],
   "Pfizer": ["pfizer", "wyeth", "hospira", "seagen", "seattle genetics", "arena", "medivation", "array biopharma", "global blood", "trillium", "anacor", "metsera", "biohaven", "amplyx", "revira", "upjohn"],
   "Novartis": ["novartis", "sandoz", "advanced accelerator", "avexis", "medicines company", "chinook", "morphosys", "mariana", "tourmaline", "regulus", "anthos", "endocyte", "gyroscope", "alcon"],

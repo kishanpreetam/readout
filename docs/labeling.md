@@ -1,8 +1,9 @@
 # How the labels were made
 
 Every accuracy number in this project is measured against labels in `labels/` or in `results/`. This page says
-exactly how each set was produced, so anyone can check, dispute or redo a label. One reviewer judged every
-label individually, following the rules below, on 2026-11-03 and 2026-11-04. The resolver was frozen before the
+exactly how each set was produced, so anyone can check, dispute or redo a label. A Claude-based AI agent, the
+same model family the project evaluates, judged every label individually, following the rules below, on
+2026-11-03 and 2026-11-04. No person has reviewed the labels yet. The resolver was frozen before the
 labels were scored; no rule was changed after looking at the scores.
 
 ## 1. Gold corporate groups (`labels/resolution_gold_groups.csv`)
@@ -15,7 +16,7 @@ not from the resolver's output.
 
 **Finding candidates.** For each group, all 10,998 sponsor names were searched for the terms in
 `labels/gold_group_keywords.json`: the company's own name and the names of subsidiaries and acquired companies
-known to the reviewer (for example "genentech", "chugai" and "spark therapeutics" for Roche). That produced 271
+known to the labeler (for example "genentech", "chugai" and "spark therapeutics" for Roche). That produced 271
 candidate names. One more name ("Vaccinex Inc.") was added because the resolver put it inside a gold group,
 which made 272.
 
@@ -65,7 +66,7 @@ random sample of 40 (seed 5) was read against the study title and summary and pu
 ## 4. Text-to-SQL failures (`results/qa/failure_review.csv`)
 
 Every wrong answer in the benchmark (3 of 96) was read and given a cause. Gold answers themselves come from
-hand-written SQL in `readout/qa.py`, run on the warehouse; ties were checked so that "which one" questions
+SQL written in advance in `readout/qa.py`, run on the warehouse; ties were checked so that "which one" questions
 have a single correct answer.
 
 ## Redoing the labels
