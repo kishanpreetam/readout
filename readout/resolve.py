@@ -12,7 +12,7 @@ Entity pair rules (any one merges two base names):
   fuzzy      token-sort ratio of the cores at least FUZZY_MIN, same first three letters, compatible words
 Candidate pairs come from blocking (same normalized name, same core, same first core word, or a character
 3-gram TF-IDF nearest neighbor), so the rules never compare all 60 million pairs.
-No hand-made alias list is used, which keeps the hand-labeled evaluation independent of the resolver.
+No hand-made alias list is used, which keeps the labeled evaluation independent of the resolver.
 """
 
 from __future__ import annotations

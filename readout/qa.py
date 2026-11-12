@@ -1,6 +1,6 @@
 """Text-to-SQL benchmark over the warehouse.
 
-48 questions (36 single-step and 12 multi-step), each with a hand-written gold SQL query. Gold answers are computed by running that SQL on
+48 questions (36 single-step and 12 multi-step), each with a gold SQL query written in advance. Gold answers are computed by running that SQL on
 the warehouse, so they always match the data. A model writes SQL for each question under two prompt
 variants, the SQL runs in the sandbox (readout.sqlguard), and the result is compared with the gold answer.
   schema_only    table and column names with types
