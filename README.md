@@ -31,7 +31,7 @@ person has reviewed them yet (see Limitations).
 
 ## Readout Globe (added 2026-11-11)
 
-A local web app that puts the 49,798 trials on a 3D globe: one point per site location, filters for phase,
+A local web app that puts the 46,587 trials with a mapped site on a 3D globe: one point per site location, filters for phase,
 status, lead sponsor and text, a month slider that shows the trials active at that time, a switch for readouts
 due in the next 12 months, and a question box that answers plain-English questions with the text-to-SQL setup
 benchmarked above. Run `make sites` once, then `.venv/bin/python -m globe` and open http://127.0.0.1:8091.

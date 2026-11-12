@@ -1,6 +1,6 @@
 # Readout Globe: data and API contract
 
-Readout Globe shows Readout's 49,798 industry trials on a 3D globe: one point per trial site location,
+Readout Globe puts every Readout trial with a mapped site on a 3D globe: one point per trial site location,
 filters, a time slider, and plain-English questions answered by the same text-to-SQL setup Readout
 benchmarked. This file is the contract between the data layer, the API server and the page.
 
